@@ -1,0 +1,14 @@
+<component name="ProjectCodeStyleConfiguration">
+  <code_scheme name="Project" version="173">
+    <option name="OTHER_INDENT_OPTIONS">
+      <value>
+        <option name="USE_TAB_CHARACTER" value="true" />
+        <option name="SMART_TABS" value="true" />
+      </value>
+    </option>
+    <CsvCodeStyleSettings>
+      <option name="TRIM_LEADING_WHITE_SPACES" value="true" />
+      <option name="TRIM_TRAILING_WHITE_SPACES" value="true" />
+    </CsvCodeStyleSettings>
+  </code_scheme>
+</component>
