@@ -11,6 +11,18 @@ case class PasswordModel(min: Int, max: Int, letter: String, password: String) {
     }
   }
 
+  def partTwoValidation: Boolean = {
+
+    val firstAppearance: Char = password.charAt(min - 1)
+    val secondAppearance: Char = password.charAt(max - 1)
+
+    (firstAppearance, secondAppearance) match {
+      case (first, second) if first == letter.charAt(0) && second != letter.charAt(0) => true
+      case (first, second) if first != letter.charAt(0) && second == letter.charAt(0) => true
+      case _ => false
+    }
+  }
+
 }
 
 class AdventOfCodeTwo {
@@ -97,9 +109,47 @@ object ExerciseTwo extends App {
   println(s"number of min key = $minListSize")
   println(model.passwordList) // seq iof data only password part
   println(seqOfPasswordModels) // password data is now wrapped in Password case classes
-  println(seqOfValidatedPasswords)  //applied the validation to seq of Password models
-                                    // to tell me if password passes the validation given in requirements, return trues and falses
+  println(seqOfValidatedPasswords) //applied the validation to seq of Password models
+  // to tell me if password passes the validation given in requirements, return trues and falses
 
   println(removeAllInvalidPasswords) //filter and collect only the true
   println(sizeOfValidPasswordCollection) //return the size of the list of valid passwords (true)
+
+  //part two
+
+  val seqOfValidatedPasswords2: Seq[Boolean] = seqOfPasswordModels.map(_.partTwoValidation)
+  val removeAllInvalidPasswords2: Seq[Boolean] = seqOfValidatedPasswords2.filter(_ == true)
+  val sizeOfValidPasswordCollection2 = removeAllInvalidPasswords2.length
+
+  println(seqOfValidatedPasswords2)
+  println(removeAllInvalidPasswords2)
+  println(sizeOfValidPasswordCollection2)
+
+  def partTwoValidation2(min: Int, max: Int, letter: String, password: String): Boolean = {
+
+    val firstAppearance: Char = password.charAt(min - 1)
+    val secondAppearance: Char = password.charAt(max - 1)
+
+    (firstAppearance, secondAppearance) match {
+      case (first, second) if first == letter.charAt(0) && second != letter.charAt(0) =>
+        println(password)
+        println(firstAppearance)
+        println(secondAppearance)
+        true
+      case (first, second) if first != letter.charAt(0) && second == letter.charAt(0) =>
+        println(password)
+        println(firstAppearance)
+        println(secondAppearance)
+        true
+      case _ =>
+        println(password)
+        println(firstAppearance)
+        println(secondAppearance)
+        false
+    }
+  }
+
+  println(partTwoValidation2(1,7,"q", "qqqqxvqrkbqqztlqlzq"))
+  println(partTwoValidation2(4,5,"t", "wcjtfpt"))
+
 }
