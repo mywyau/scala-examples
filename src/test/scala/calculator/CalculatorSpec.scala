@@ -1,10 +1,12 @@
-import Calculator._
+package calculator
 
+import calculator.Calculator.cube
+import specBase.SpecBase
 
-class ExampleTestSpec extends SpecBase {
+class CalculatorSpec extends SpecBase {
 
   // needs the 'behavior of $component' needed to begin a TestSpec for nicer wording with heading in terminal
-  behavior of "CubeCalculator"  // Heading of the test spec can be specified here.
+  behavior of "CubeCalculator" // Heading of the test spec can be specified here.
 
   // tests can then go below
 
@@ -22,5 +24,8 @@ class ExampleTestSpec extends SpecBase {
 
     cube(5) shouldBe 125
   }
+
+  behavior of "Mikey" // Heading of the test spec can be specified here.
+
 
 }

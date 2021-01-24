@@ -1,3 +1,5 @@
+package specBase
+
 import org.scalatest.{FlatSpec, Matchers}
 
 trait SpecBase extends FlatSpec with Matchers {

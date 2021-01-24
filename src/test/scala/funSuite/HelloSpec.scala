@@ -1,3 +1,5 @@
+package funSuite
+
 import org.scalatest._
 
 class HelloSpec extends FunSuite with DiagrammedAssertions {

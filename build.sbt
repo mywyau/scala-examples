@@ -5,7 +5,7 @@ ThisBuild / scalaVersion := "2.12.10"
 lazy val hello = (project in file("."))
   .settings(
 
-    name := "scala-exmaples",
+    name := "scala-examples",
 
     libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % "1.1.2",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,

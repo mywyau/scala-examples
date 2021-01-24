@@ -1,4 +1,4 @@
-package topics.adventOfCode.exerciseOne
+package topics.adventOfCode.exercise1
 
 object ExerciseOne extends App {
 

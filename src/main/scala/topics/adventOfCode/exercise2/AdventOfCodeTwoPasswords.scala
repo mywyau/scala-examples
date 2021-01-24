@@ -1,4 +1,4 @@
-package topics.adventOfCode.exerciseTwo
+package topics.adventOfCode.exercise2
 
 object AdventOfCodeTwoPasswords {
 
