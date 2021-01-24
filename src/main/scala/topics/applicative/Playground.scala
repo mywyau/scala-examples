@@ -4,8 +4,9 @@ import cats.Functor
 
 object Playground extends ApplicativeExample with App {
 
-  val applicative = new ApplicativeExample
+  // this is a bit of a WIP
 
+  val applicative = new ApplicativeExample
 
   println(applicative.composedApplicativeExample) //97 + 5 composed in Option
   println(traverseOptionExample)
@@ -13,6 +14,7 @@ object Playground extends ApplicativeExample with App {
 }
 
 trait MyApplicative2[F[_]] extends Functor[F] {
+
   def product[A, B](fa: F[A], fb: F[B]): F[(A, B)]
 
   def pure[L, A](a: A): F[A]
@@ -133,10 +135,10 @@ class ApplicativeExample {
   val traverseOptionExample: Option[List[Int]] = traverseOption(oneToFive)(i => Some(i): Option[Int]) //turns a List[Int] => Option[List[Int]]
 
 
-//  def traverseEither[E, A, B](as: List[A])(f: A => Either[E, B]): Either[E, List[B]] =
-//    as.foldRight(Right(List.empty[B]): Either[E, List[B]]) { (a: A, acc: Either[E, List[B]]) =>
-//      val eitherB: Either[E, B] = f(a)
-//      Topics.Applicative[Either[E, ]].map2(eitherB, acc)(_ :: _)
-//    }
+  //  def traverseEither[E, A, B](as: List[A])(f: A => Either[E, B]): Either[E, List[B]] =
+  //    as.foldRight(Right(List.empty[B]): Either[E, List[B]]) { (a: A, acc: Either[E, List[B]]) =>
+  //      val eitherB: Either[E, B] = f(a)
+  //      Topics.Applicative[Either[E, ]].map2(eitherB, acc)(_ :: _)
+  //    }
 
 }

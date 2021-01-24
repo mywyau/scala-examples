@@ -1,4 +1,4 @@
-package topics.adventOfCode.ExerciseOne
+package topics.adventOfCode.exerciseOne
 
 class AdventOfCodeOne {
 

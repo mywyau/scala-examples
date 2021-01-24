@@ -8,8 +8,10 @@ class ADTImplementation {
     val OK, NotOk = Value
   }
 
-  def foo(somethingToMatch: Status.Value): Unit = somethingToMatch match {
-    case Status.OK => println("ok")
+  def foo(somethingToMatch: Status.Value): Unit = {
+    somethingToMatch match {
+      case Status.OK => println("ok")
+    }
   }
 
   /*
@@ -17,10 +19,15 @@ class ADTImplementation {
       foo(Status.NotOk)   //   <----- calling NotOk kills it
   */
 
+
+  // The below implementation is a alternative to the sealed trait version of sum types/enums
   sealed abstract class Status extends Product with Serializable
+
   object StatusADT {
-    final case object Ok extends Status                 // <---- make case objects 'final' and put into own object is good practice allows import of object and renaming on import
+
+    final case object Ok extends Status // <---- make case objects 'final' and put into own object is good practice allows import of object and renaming on import
     final case object NotOk extends Status
+
   }
 
   //The compiler now has enough information to check whether your pattern matches are exhaustive:
@@ -30,7 +37,7 @@ class ADTImplementation {
   }
 
   // warning: match may not be exhaustive.
-  // It would fail on the following input: Nok
+  // It would fail on the following input: NotOk
   // def foo(w: Status): Unit = w match {
   //
 

@@ -1,4 +1,4 @@
-package topics.adventOfCode.ExerciseThree
+package topics.adventOfCode.exerciseThree
 
 case class PasswordModel(min: Int, max: Int, letter: String, password: String)
 

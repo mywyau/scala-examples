@@ -1,4 +1,4 @@
-package topics.adventOfCode.ExerciseThree
+package topics.adventOfCode.exerciseThree
 
 object AdventOfCodeThreeInput {
 

@@ -38,7 +38,11 @@ class FuturesExercise {
     }
   }
 
-  val buyingDonuts: Future[Boolean] = donutStock("plain donut").flatMap(qty => buyDonuts(qty))
+  val buyingDonuts: Future[Boolean] = {
+    donutStock("plain donut").flatMap(
+      quantity => buyDonuts(quantity)
+    )
+  }
 
   println("\nStep 3: Chaining Futures using 'for comprehension' instead of flatMaps to look nicer")
 

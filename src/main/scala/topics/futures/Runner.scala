@@ -1,6 +1,4 @@
-package topics.futures.Runner
-
-import topics.futures.FuturesExercise
+package topics.futures
 
 object Runner extends App {
 

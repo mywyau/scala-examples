@@ -1,6 +1,4 @@
-package topics.polymorphism.Runner
-
-import topics.polymorphism.Polymorph
+package topics.polymorphism
 
 object Runner extends App {
 
@@ -11,7 +9,7 @@ object Runner extends App {
 
   val coupon = s"Result of polymorpher.returnGenericApplyDiscount with String parameter = ${polymorpher.returnGenericApplyDiscount[String]("COUPON_123")}"
   val priceDiscount = s"Result of polymorpher.returnGenericApplyDiscount with Double parameter = ${polymorpher.returnGenericApplyDiscount[Double](10.5)}"
-  val unknownDiscount = s"Result of polymorpher.returnGenericApplyDiscount with Char parameter = ${polymorpher.returnGenericApplyDiscount[Char]('U') }"
+  val unknownDiscount = s"Result of polymorpher.returnGenericApplyDiscount with Char parameter = ${polymorpher.returnGenericApplyDiscount[Char]('U')}"
 
   val t = List(
     discounts,
@@ -20,9 +18,6 @@ object Runner extends App {
     priceDiscount,
     unknownDiscount
   ).map(i => println(i))
-
-
-
 
 
 }
