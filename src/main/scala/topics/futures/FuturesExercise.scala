@@ -12,7 +12,7 @@ class FuturesExercise {
       Thread.sleep(3000)
       // Assume a super long database running operation in this case 3 seconds changing
       // this above 5 will kill it because of 'val vanillaDonutStock' only allows at most 5 seconds Await
-      println("checking donut stock")
+      println(s"checking $donut stock")
       10 //return value
     }
   }
@@ -40,7 +40,7 @@ class FuturesExercise {
 
   val buyingDonuts: Future[Boolean] = donutStock("plain donut").flatMap(qty => buyDonuts(qty))
 
-  println("\nStep 3: Chaining Topics.Futures using for comprehension")
+  println("\nStep 3: Chaining Futures using 'for comprehension' instead of flatMaps to look nicer")
 
   val loopyFutures: Future[Unit] = {
     for {
