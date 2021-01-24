@@ -8,7 +8,7 @@ class FlatSpecWithMatchersExampleTest extends SpecBase("CubeCalculator") {
     cube(3) shouldBe 27
   }
 
-  it should "calculate the 'cube' of 4 to be 64" in {
+  ignore should "calculate the 'cube' of 4 to be 64" in {
 
     cube(4) shouldBe 64
   }
