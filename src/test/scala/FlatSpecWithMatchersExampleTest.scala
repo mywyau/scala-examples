@@ -1,4 +1,4 @@
-import CubeCalculator._
+import Calculator._
 
 
 class FlatSpecWithMatchersExampleTest extends SpecBase("CubeCalculator") {
