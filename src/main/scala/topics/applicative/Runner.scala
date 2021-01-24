@@ -2,7 +2,7 @@ package topics.applicative
 
 import cats.Functor
 
-object Playground extends ApplicativeExample with App {
+object Runner extends ApplicativeExample with App {
 
   // this is a bit of a WIP
 
