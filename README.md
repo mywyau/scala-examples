@@ -1,3 +1,3 @@
 # scala-examples
-#
-# A personal playground for general stuff
+
+ A personal playground for general stuff
