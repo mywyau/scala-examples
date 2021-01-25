@@ -9,25 +9,14 @@ class Example {
       To use a self-type in a trait, write an identifier, the type of another trait to mix in, and a => (e.g. someIdentifier: SomeOtherTrait =>).
       */
 
-  trait User {
-    def username: String
-  }
-
-  trait Tweeter {
-    this: User => //reassign this    makes username in scope of Tweeter
-    def tweet(tweetText: String): Unit = println(s"$username: $tweetText") //username is from User trait
-  }
-
-  class VerifiedTweeter(val username_ : String) extends Tweeter with User { // we mixin User because Tweeter requires it
-    def username = s"real $username_"
-  }
-
   val realBeyonce = new VerifiedTweeter("Beyonce")
+
   realBeyonce.tweet("Just spilled my glass of lemonade") // prints "real Beyonce: Just spilled my glass of lemonade"
+  realBeyonce.username // prints "real Beyonce: Just spilled my glass of lemonade"
 
   /*
-  Because we said this: User => in trait Tweeter, now the variable username is in scope for the tweet method.
-  This also means that since VerifiedTweeter extends Tweeter, it must also mix-in User (using with User).
-      */
+    Because we said this: User => in trait Tweeter, now the variable username is in scope for the tweet method.
+    This also means that since VerifiedTweeter extends Tweeter, it must also mix-in User (using with User).
+  */
 
 }
