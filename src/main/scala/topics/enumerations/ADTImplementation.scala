@@ -19,7 +19,6 @@ class ADTImplementation {
       foo(Status.NotOk)   //   <----- calling NotOk kills it
   */
 
-
   // The below implementation is a alternative to the sealed trait version of sum types/enums
   sealed abstract class Status extends Product with Serializable
 
@@ -38,7 +37,7 @@ class ADTImplementation {
 
   // warning: match may not be exhaustive.
   // It would fail on the following input: NotOk
-  // def foo(w: Status): Unit = w match {
+  // def foo(w: Status): Unit = w match {    unfinished WIP
   //
 
 }
