@@ -4,7 +4,7 @@ import cats.Functor
 
 //Copied bits from Cats Library
 
-class Kleisli {
+class KleisliOne {
 
   val twice: Int => Int = { x => x * 2 }
 
@@ -20,16 +20,7 @@ class Kleisli {
 
   //Sometimes, our functions will need to return monadic values. For instance, consider the following set of functions.
 
-  val parseStringToOptInt: String => Option[Int] = { //returns an Option[Int]
-    yourString =>
-      val givenStringIsAnInteger = yourString.matches("-?[0-9]+")
-
-      if (givenStringIsAnInteger) {
-        Some(yourString.toInt)
-      } else {
-        None
-      }
-  }
+  val parse: String => Option[Int] = s => if (s.matches("-?[0-9]+")) Some(s.toInt) else None //returns an Option[Int]
 
   val reciprocal: Int => Option[Double] = { // Needs a Int from 'val parseStringToInt' but 'val parseStringToInt' gives back Option[Int] how can we solve this?
     yourInt => if (yourInt != 0) Some(1.0 / yourInt) else None

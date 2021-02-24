@@ -20,6 +20,10 @@ import cats.implicits._
 *
 */
 
+case class Mikey(id: Int)
+
+case class Sushi(chef: Mikey)
+
 class OptionusPrime() {
 
   // first implementation of a bunch of methods about mikeys making sushi
@@ -35,15 +39,18 @@ class OptionusPrime() {
   }
 
   /*
-    - you then realise there are un-captured mikey's which have not been id-ed.
+    - you then realise there are sometimes captured mikey's which have not been id-ed hence you are unable to find a Mikey corresponding to an id.
     - you then also realise that mikeys make random stuff that may not resemble sushi or know how to make sushi so you make it optional
+    - to capture that info as a None resultant type as it doesn't represent anything like sushi
   */
 
-  def findMikeyByIdPrime(id: Int): Future[Option[Mikey]] = Future(Some(Mikey(id)))
+  val whyMakeOptionsLikeThis: Option[Mikey] = Mikey(1).some // cat shenanigans because they're built different
 
-  def makeAFutureSushiPrime(mikey: Mikey): Future[Option[Sushi]] = Future(Some(Sushi(mikey)))
+  def findMikeyByIdPrime(id: Int): Future[Option[Mikey]] = Future(Mikey(id).some)
 
-  // you still want to taste that legendary sushi but this code doesnt compile, the type signatures is mismatched and do not compose
+  def makeAFutureSushiPrime(mikey: Mikey): Future[Option[Sushi]] = Future(Sushi(mikey).some)
+
+  // you still want to taste that legendary sushi but this code doesnt compile, the type signatures are mismatched and do not compose
 
   /*
     def findTheSushiMadeByAMikeyPrime(mikeyID: Int): Future[Option[Sushi]] = {
@@ -54,7 +61,7 @@ class OptionusPrime() {
       }
   */
 
-  // you need to handle the option and have to flatMap etc. this is native which handles the option inside the Future
+  // you need to handle the option and have to flatMap etc. to handle future, this is a native solution which handles the Option inside the Future
 
   def findTheSushiMadeByAMikeyPrime(mikeyID: Int): Future[Option[Sushi]] = {
     findMikeyByIdPrime(mikeyID).flatMap {
@@ -63,7 +70,8 @@ class OptionusPrime() {
     }
   }
 
-  // cat-ify the method to make it fancy
+  // cat-ify the method to make it fancy another iteration of the possible solution using OptionT
+  // OptionT[F[_], A](value: F[Option[A]])  <--- see how value takes F[Option[A]] that 'F' is our Future
 
   def findTheSushiMadeByAMikeyCats(mikeyID: Int): Future[Option[Sushi]] = {
     (for {
@@ -72,16 +80,24 @@ class OptionusPrime() {
     } yield sushi).value
   }
 
-  // Now to clean up everything to make it a little nicer
+
+  // Another iteration of the whole solution below     ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
+
+  // Now to clean up everything to make it a little nicer, by wrapping the functions called in the for loop in OptionT
 
   def finalFindMikeyById(id: Int): OptionT[Future, Mikey] = OptionT {
-    Future(Some(Mikey(id)))
+    Future(Mikey(id).some)
   }
 
   def finalMakeAFutureSushiPrime(mikey: Mikey): OptionT[Future, Sushi] = OptionT {
-    Future(Some(Sushi(mikey)))
+    Future(Sushi(mikey).some)
   }
 
+  /*
+    Cleaner final for loop syntax sugar
+    Never release the into the public a type of OptionT[F[_], A] not native to original Scala so if you want external parties working with say your APIs
+    You do not want to force them to work with Cats so give them Future[Option[Sushi]], hide your short hand cheats
+  */
 
   def finalFindTheSushiMadeByAMikeyCats(mikeyID: Int): OptionT[Future, Sushi] = {
     for {
@@ -94,12 +110,9 @@ class OptionusPrime() {
 
   val getMikeyToMakeMeSushi: Future[Option[Sushi]] = finalFindTheSushiMadeByAMikeyCats(42).value
 
+  // Challenge: I wonder if you can figure out EitherT and how that works without referring to Cats now?
+
 }
-
-
-case class Mikey(id: Int)
-
-case class Sushi(chef: Mikey)
 
 
 
