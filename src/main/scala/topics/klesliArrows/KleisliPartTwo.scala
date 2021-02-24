@@ -32,13 +32,16 @@ import cats.implicits._
 
 object KleisliPartTwo {
 
-  //Kleisli Arrows are all about
+  // Kleisli Arrows are all about embellishing types in most cases for (Cats/Scala/Functional Programming - for now)
+  // usually an endofunctor C -> C preserving the structure
+
+  // A => F[B]   A is our input F[B] is our new output value we have lifted into our type into a container of sorts usually a Monad/Functor
 
   //Sometimes, our functions will need to return monadic values. For instance, consider the following set of functions.
 
   val parse: String => Option[Int] = s => if (s.matches("-?[0-9]+")) Some(s.toInt) else None //returns an Option[Int]
 
-  val reciprocal: Int => Option[Double] = { // Needs a Int from 'val parseStringToInt' but 'val parseStringToInt' gives back Option[Int] how can we solve this?
+  val reciprocal: Int => Option[Double] = { // Needs a Int from 'val parse' but 'parse' gives back Option[Int] how can we solve this?
     yourInt => if (yourInt != 0) Some(1.0 / yourInt) else None
   }
 

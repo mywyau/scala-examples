@@ -2,7 +2,8 @@ package topics.enumerations
 
 class ADTImplementation {
 
-  //Enumeration suffers from a major flaw: exhaustivity is not checked in pattern matches.
+  // Enumeration suffers from a major flaw: exhaustivity is not checked in pattern matches.
+  // Well you can handle the other case for NotOk too then it will be fine tbh.
 
   object Status extends Enumeration {
     val OK, NotOk = Value
@@ -11,6 +12,7 @@ class ADTImplementation {
   def foo(somethingToMatch: Status.Value): Unit = {
     somethingToMatch match {
       case Status.OK => println("ok")
+      // needs a 'case _ => <do something>' - here then will be fine, but currently this would not give a warning according to article
     }
   }
 
