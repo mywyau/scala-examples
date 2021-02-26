@@ -69,7 +69,7 @@ class FuturesExercise {
       println(s"checking bad $donut stock")
       Thread.sleep(15000)
       throw new NullPointerException // <-----  yikes we forced it to blow up with a Null Pointer, think of the children :'(
-      2000000000 //return value 2 million donuts which we will never get to eat :(
+      2000000000 // return value 2 million donuts which we will never get to eat :(
     }.recover {
       case e: NullPointerException =>
         println(s"The donut system crashed and threw a $e but we saved it with a recover that has a partial function")
