@@ -61,7 +61,15 @@ class EitherTron {
     } yield result
   }
 
+  val number: EitherT[Option, String, Int] = EitherT.rightT[Option, String](5) // when using rightT or leftT need to use the type annotation
+  val error: EitherT[Option, String, Int] = EitherT.leftT[Option, Int]("Not a number")
 
+  // When specifying the container then you can use just .right or .left on EitherT
+
+  val numberO = Some(5)
+  val errorStringO = Some("Not a number")
+  val numberE: EitherT[Option, String, Int] = EitherT.right(numberO) //again give the type annotation might be an import issue tho not sure
+  val errorE: EitherT[Option, String, Int] = EitherT.left(errorStringO)
 }
 
 class StarScream {
