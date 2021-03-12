@@ -1,0 +1,3 @@
+git ignore  --- Ignores the stuff you've changed that you do not want to see or care about during, add/commit/push/making pull requests. Just get the pathing correct.
+
+

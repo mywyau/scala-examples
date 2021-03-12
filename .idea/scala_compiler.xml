@@ -4,7 +4,7 @@
     <option name="postfixOps" value="true" />
     <option name="higherKinds" value="true" />
     <option name="existentials" value="true" />
-    <profile name="sbt 1" modules="scala-exmaples">
+    <profile name="sbt 1" modules="scala-examples,scala-exmaples">
       <parameters>
         <parameter value="-Ypartial-unification" />
         <parameter value="-Ypartial-unification" />
