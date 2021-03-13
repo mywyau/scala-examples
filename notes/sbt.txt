@@ -1,0 +1,7 @@
+sbt "testOnly *TestSpec"    -- wildcard anything in front
+sbt "testOnly *TestSpec*"    -- wildcard anything in front & back
+sbt test compile
+sbt testQuick
+sbt it:test
+sbt test
+
