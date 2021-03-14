@@ -1,12 +1,7 @@
 package learnCatsAndStuff.monads
 
-import cats.{Applicative, Id}
 import cats.data.Reader
-import cats.instances._
-
-import cats._
-import cats.data._
-import cats.implicits._
+import cats.{Applicative, Id, _}
 
 case class Cat(name: String, favourtiteFood: String)
 
@@ -83,7 +78,7 @@ class DatabaseExercise {
 //  )
 }
 
-object Runner extends App {
+object ReaderRunner extends App {
 
   val users = Map(
     1 -> "dade",
