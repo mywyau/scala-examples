@@ -51,7 +51,7 @@ class Functors1 {
   */
 
   /*
-    Par􀢼al Unification
+    Partial Unification
 
     For the above examples to work we need to add the following compiler
     option to build.sbt:
@@ -216,7 +216,7 @@ class Functors2 {
         - Box[Int] is custom higher kinded type/ type constructor, possibly no Box[Int] implicit
    */
 
-  import scala.concurrent.{Future, ExecutionContext}
+  import scala.concurrent.{ExecutionContext, Future}
 
   implicit def futureFunctor(implicit ec: ExecutionContext): Functor[Future] = {
     new Functor[Future] {
@@ -261,18 +261,57 @@ trait PrintableInterface {
         printable.format(box.value)
     }
 
-  implicit def boxPrintable2[A](implicit printable: Printable[A]): Printable[Box[A]] =
-    printable.contramap[Box[A]](_.value)
+  implicit def boxPrintable2[B](implicit printable: Printable[B]): Printable[Box[B]] =
+    printable.contramap[Box[B]](_.value)
+}
+
+class PrintablePlayground extends PrintableInterface {
+
+  val formatString = implicitly[Printable[String]].format("Mikey")
+  val formatBoolean = implicitly[Printable[Boolean]].format(true)
+
+  val formatBoxString: String = boxPrintable2[String].format(Box("Mikey")) // how does this work?
+  val formatBoxBoolean: String = boxPrintable2[Boolean].format(Box(true)) //
+
+  /*
+
+    • Regular covariant Functors, with their map method, represent the ability
+      to apply functions to a value in some context. Successive calls to
+      map apply these functions in sequence, each accepting the result of its
+      predecessor as a parameter.
+
+    • Contravariant functors, with their contramap method, represent the
+      ability to “prepend” functions to a function-like context. Successive
+      calls to contramap sequence these functions in the opposite order to map.
+
+    • Invariant functors, with their imap method, represent bidirectional transformations.
+
+    Regular Functors are by far the most common of these type classes, but even
+    then it is rare to use them on their own. Functors form a foundational building
+    block of several more interesting abstractions that we use all the time. In
+    the following chapters we will look at two of these abstractions: monads and
+    applicative functors.
+
+    Functors for collections are extremely important, as they transform each element
+    independently of the rest. This allows us to parallelise or distribute
+    transformations on large collections, a technique leveraged heavily in “mapreduce”
+    frameworks like Hadoop. We will investigate this approach in more
+    detail in the Map-reduce case study later in the book.*/
+
 
 }
 
-class Printable extends  PrintableInterface {
 
-  val formatBoxString =
+object Runner extends App {
 
+  val printer = new PrintablePlayground
+
+  println(printer.formatString)
+  println(printer.formatBoolean)
+  println(printer.formatBoxString)
+  println(printer.formatBoolean)
 
 }
-
 
 
 
