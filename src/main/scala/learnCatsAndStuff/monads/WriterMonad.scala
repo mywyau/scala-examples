@@ -60,8 +60,8 @@ class WriterMonad {
 
   // we can extract the result and log using .value
 
-  val aResult = writerA.value
-  val aLog = writerA.written
+  val aResult: Id[Int] = writerA.value
+  val aLog: Id[Vector[String]] = writerA.written
 
   // we can extract both values at the same time using the run method
 
@@ -86,18 +86,20 @@ class WriterMonad {
       b <- 32.writer(Vector("x", "y", "z"))
     } yield a + b
 
-
   val writer1b: WriterT[Id, Vector[String], Int] = writer1.map(result => result + 9000)
-
 
   // In addition to transforming the result with map and flatMap, we can transform the log in Writer with mapWritten method:
   val writer2a: WriterT[Id, Vector[String], Int] = writer1.mapWritten(_.map(_.toUpperCase))
 
   val writer3a: WriterT[Id, Vector[String], Int] =
     writer1.bimap(
-      log => log.map(_.reverse),
-      result => result * 100
-    )
+      log => log.map(_.reverse),    // bimap is a bifunctor which takes two functions and acts out the results of each function to their respective components.
+      result => result * 100        // i.e. a => a'  and b => b' at the same time so it works on a category E which is a product of categories C x D.
+    )                               // the function on a does not interact with b and b's functions only acts on the b component. log => log, result => result
+                                    // product is a bifunctor, applies functions in parallel to respective components of the product
+
+  // for sum types for example Either[A, B], Either is also a bifunctor. each component A or B has it's own function which evaluates to it's own result
+  // Right(b) => a + 2,     Left(a) => a + 5  i.e. 2 separate functions for projections Right or Left
 
   val writer3b: WriterT[Id, Vector[String], Int] =
     writer1.mapBoth { (log, result) =>

@@ -7,7 +7,7 @@ case class Cat(name: String, favourtiteFood: String)
 
 class ReaderMonad {
 
-  /*  We can create a Reader[A, B] from a func􀦞on A => B using the
+  /*  We can create a Reader[A, B] from a function A => B using the
     Reader.apply constructor:*/
 
   val catReader: Reader[Cat, String] = Reader(cat => cat.name) //Create a Reader of Cats, by defining it's type and using it's apply to construct it for our Cat case class
@@ -18,8 +18,8 @@ class ReaderMonad {
   // So far so simple, but what advantage do Readers give us over the raw functions?
 
   /*  The power of Readers comes from their map and flatMap methods, which
-    represent different kinds of func􀦞on composi􀦞on. We typically create a set of
-      Readers that accept the same type of configura􀦞on, combine them with map
+    represent different kinds of function composition. We typically create a set of
+      Readers that accept the same type of configuration, combine them with map
     and flatMap, and then call run to inject the config at the end.*/
 
   val greetKitty: Reader[Cat, String] = catReader.map(name => s"Hello $name") // type can also be  Kleisli[Id, Cat, String], since Reader[A, B] is a Kleisli Category
@@ -35,9 +35,9 @@ class ReaderMonad {
     } yield s"$greet. $feed."
 }
 
-/*The classic use of Readers is to build programs that accept a configura􀦞on
+/*The classic use of Readers is to build programs that accept a configuration
 as a parameter. Let’s ground this with a complete example of a simple login
-system. Our configura􀦞on will consist of two databases: a list of valid users
+system. Our configuration will consist of two databases: a list of valid users
 and a list of their passwords:*/
 
 case class Database(usernames: Map[Int, String], passwords: Map[String, String])

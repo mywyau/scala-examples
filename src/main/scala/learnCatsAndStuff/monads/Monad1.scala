@@ -1,7 +1,7 @@
 package learnCatsAndStuff.monads
 
-/*Monads are one of the most common abstrac􀦞ons in Scala. Many Scala programmers
-quickly become intui􀦞vely familiar with monads, even if we don’t
+/*Monads are one of the most common abstractions in Scala. Many Scala programmers
+quickly become intuitively familiar with monads, even if we don’t
 know them by name.
 Informally, a monad is anything with a constructor and a flatMap method. All
 of the functors we saw in the last chapter are also monads, including Option,
@@ -28,13 +28,13 @@ the value fom a context and generating the next context in th sequence.
 
 /*Monad Laws
 pure and flatMap must obey a set of laws that allow us to sequence
-opera􀦞ons freely without unintended glitches and side-effects:
+operations freely without unintended glitches and side-effects:
 Le􀁛 iden􀢼ty: calling pure and transforming the result with func is the
 same as calling func:
 pure(a).flatMap(func) == func(a)
 Right iden􀢼ty: passing pure to flatMap is the same as doing nothing:
 m.flatMap(pure) == m
-Associa􀢼vity: flatMapping over two func􀦞ons f and g is the same as
+Associa􀢼vity: flatMapping over two functions f and g is the same as
 flatMapping over f and then flatMapping over g:
 m.flatMap(f).flatMap(g) == m.flatMap(x => f(x).flatMap(g))*/
 
@@ -114,8 +114,8 @@ class Monad1 {
 
 
   /*  We can rewrite this code using for comprehensions. The compiler will “do the
-  right thing” by rewri􀦞ng our comprehension in terms of flatMap and map and
-    inser􀦞ng the correct implicit conversions to use our Monad:*/
+  right thing” by rewriting our comprehension in terms of flatMap and map and
+    inserting the correct implicit conversions to use our Monad:*/
 
   def sumSquare2[F[_] : Monad](a: F[Int], b: F[Int]): F[Int] = // for loop implementation
     for {
