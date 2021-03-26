@@ -174,7 +174,7 @@ object RunnerB extends App {
   4. by placing them in the companion object of the parameter type.
 
   With option 1 we bring instances into scope by importing them. With option
-  2 we bring them into scope with inheritance. With op􀦞ons 3 and 4, instances
+  2 we bring them into scope with inheritance. With options 3 and 4, instances
   are always in implicit scope, regardless of where we try to use them.
 
 */

@@ -12,9 +12,10 @@ lazy val hello = (project in file("."))
     libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "3.1.2" % Test,
     libraryDependencies += "com.typesafe.play" %% "play-json" % "2.6.9",
     libraryDependencies += "org.typelevel" %% "cats-core" % "2.0.0",
-    scalacOptions += "-Ypartial-unification"
+    scalacOptions += "-Ypartial-unification",
+    scalacOptions += "-language:higherKinds"   // for higher kinds
 
-  )
+)
 
 lazy val testSettings: Seq[Def.Setting[_]] = Seq(
   fork := true,

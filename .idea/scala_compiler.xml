@@ -5,6 +5,7 @@
     <option name="higherKinds" value="true" />
     <option name="existentials" value="true" />
     <profile name="sbt 1" modules="scala-examples,scala-exmaples">
+      <option name="higherKinds" value="true" />
       <parameters>
         <parameter value="-Ypartial-unification" />
         <parameter value="-Ypartial-unification" />

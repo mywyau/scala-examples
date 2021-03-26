@@ -3,7 +3,6 @@ package topics.klesliArrows
 import cats.data.Kleisli
 import cats.implicits._
 
-
 /*
   Kleisli Categories extract from Category Theory by Bartosz Milewski
 
@@ -39,22 +38,26 @@ object KleisliPartTwo {
 
   //Sometimes, our functions will need to return monadic values. For instance, consider the following set of functions.
 
-  val parse: String => Option[Int] = s => if (s.matches("-?[0-9]+")) Some(s.toInt) else None //returns an Option[Int]
+  val parse: String => Option[Int] =
+    s => if (s.matches("-?[0-9]+")) Some(s.toInt) else None //returns an Option[Int]
 
-  val reciprocal: Int => Option[Double] = { // Needs a Int from 'val parse' but 'parse' gives back Option[Int] how can we solve this?
+  val reciprocal: Int => Option[Double] =
+  // Needs a Int from 'val parse' but 'parse' gives back Option[Int] how can we solve this?
     yourInt => if (yourInt != 0) Some(1.0 / yourInt) else None
-  }
 
-  val parseK: Kleisli[Option, String, Int] = {
-    Kleisli((s: String) => if (s.matches("-?[0-9]+")) Some(s.toInt) else None) //wrap them in our Kleisli implementation
-  }
+  val parseK: Kleisli[Option, String, Int] =
+  //wrap them in our Kleisli
+    Kleisli((s: String) => if (s.matches("-?[0-9]+")) Some(s.toInt) else None)
 
-  val reciprocalK: Kleisli[Option, Int, Double] = {
+  val reciprocalK: Kleisli[Option, Int, Double] =
     Kleisli((i: Int) => if (i != 0) Some(1.0 / i) else None)
-  }
 
-  val parseAndReciprocal: Kleisli[Option, String, Double] = {
+  val parseAndReciprocal: Kleisli[Option, String, Double] =
     reciprocalK.compose(parseK) //Now we can compose them, since Kleisli handles the option
+
+  val parseAndReciprocal2: Kleisli[Option, String, Double] = {
+    //alternative way of composition using and then which is just different order which ever is most comfortable
+    parseK andThen reciprocalK
   }
 
 
@@ -100,6 +103,7 @@ object KleisliPartTwo {
   }
 
   val mikeyWackyStringFactory: String => Writer[String] = mikeyStringFunction >=> reverseMePlease
-
+  //since writer is own own embellishment/container we would need to define some stuff for composition and for andThen.
+  //still can work with predefined containersn like Option, Either, Futures etc., in Kleisli[F, A, B] the 'A' is input 'B' is output
 
 }

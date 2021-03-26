@@ -3,8 +3,46 @@ package scala.learnCatsAndStuff.monoids
 import cats.instances.all._
 import cats.syntax.semigroup._
 import cats.{Monoid, Semigroup} // for Monoid
+import cats.{Monoid, Semigroup}
+import cats.syntax.apply._ // for imapN
+import cats.syntax.semigroup._ // for |+|
+
+case class Cat(name: String, age: Int, colour: String)
+
+case class CatBlueprints2(name: String, age: Int, colour: Colour)
+
+sealed trait Colour
+
+case object White extends Colour
+
+case object Orange extends Colour
 
 class Monoids {
+
+  val add5And6: Int = Monoid[Int].combine(5, 6)
+
+  val orangeCat: Cat = Cat(name = "orange", age = 5, colour = "orange")
+
+  val ragdollCat: Cat = Cat(name = "snow", age = 6, colour = "white")
+
+  val tupleToCat: (String, Int, String) => Cat = Cat.apply _
+
+  val catToTuple: Cat => (String, Int, String) = (cat: Cat) => (cat.name, cat.age, cat.colour)
+
+  implicit val catCombinator: Monoid[Cat] =
+    (Monoid[String], Monoid[Int], Monoid[String])
+      .imapN(tupleToCat)(catToTuple)
+
+  val createOrangeRagdoll: Cat = orangeCat |+| ragdollCat
+
+  val catV2 = CatBlueprints2(name = "optimus", age = 6, colour = White)
+  val catV3 = CatBlueprints2(name = "megatron", age = 6, colour = Orange)
+
+  def catBot(cat:CatBlueprints2): String = cat match {
+    case CatBlueprints2(_, _, White) => "oooo a white cat it's so cute"
+    case CatBlueprints2(_, _, Orange) => "oooo an orange cat it's also super cute"
+    case _ => "omegalul"
+  }
 
   /*
 
@@ -99,4 +137,25 @@ class Monoids {
   val addListOfNums: Int = addAll(List(1, 2, 3))
 
   val sumListOptInts: Option[Int] = addAll(List(None, Some(2), Some(3)))
+}
+
+object MonoidRunner extends App {
+
+  val myMonoid = new Monoids
+
+  implicit val catCombinerHelper: Monoid[Cat] = myMonoid.catCombinator
+
+  val createOrangeRagdoll2: Cat = myMonoid.orangeCat |+| myMonoid.ragdollCat
+
+  val sayWhiteMessage: String = myMonoid.catBot(myMonoid.catV2)
+
+//  println(myMonoid.orangeCat)
+//  println(myMonoid.ragdollCat)
+//  println(myMonoid.createOrangeRagdoll)
+//  println(createOrangeRagdoll2)
+
+  println(sayWhiteMessage)
+  println(myMonoid.catBot(myMonoid.catV3))
+
+
 }
