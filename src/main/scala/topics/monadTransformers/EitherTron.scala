@@ -11,7 +11,7 @@ import scala.concurrent.Future
 class EitherTron {
 
   def parseDouble(s: String): Either[String, Double] = {
-    Try(s.toDouble).map(Right(_)).getOrElse(Left(s"$s is not a n}umber"))
+    Try(s.toDouble).map(Right(_)).getOrElse(Left(s"$s is not a number"))
   }
 
   def divide(a: Double, b: Double): Either[String, Double] = {

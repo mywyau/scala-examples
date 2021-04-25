@@ -1,9 +1,7 @@
 package scala.learnCatsAndStuff.monoids
 
 import cats.instances.all._
-import cats.syntax.semigroup._
 import cats.{Monoid, Semigroup} // for Monoid
-import cats.{Monoid, Semigroup}
 import cats.syntax.apply._ // for imapN
 import cats.syntax.semigroup._ // for |+|
 
@@ -30,8 +28,7 @@ class Monoids {
   val catToTuple: Cat => (String, Int, String) = (cat: Cat) => (cat.name, cat.age, cat.colour)
 
   implicit val catCombinator: Monoid[Cat] =
-    (Monoid[String], Monoid[Int], Monoid[String])
-      .imapN(tupleToCat)(catToTuple)
+    (Monoid[String], Monoid[Int], Monoid[String]).imapN(tupleToCat)(catToTuple)
 
   val createOrangeRagdoll: Cat = orangeCat |+| ragdollCat
 
@@ -103,7 +100,7 @@ class Monoids {
 
   case class Order(totalCost: Double, quantity: Double)
 
-  implicit val monoidOrder: Monoid[Order] = new Monoid[Order] {
+  implicit val monoidOrder: Monoid[Order] = new Monoid[Order] {  //typeclass instance for Order
 
     override def combine(order1: Order, order2: Order): Order = {
       Order(
@@ -118,8 +115,13 @@ class Monoids {
   val orderOne = Order(totalCost = 1000, quantity = 10)
   val orderTwo = Order(totalCost = 2000, quantity = 5)
 
-  val orderMonoidCombine = Monoid[Order].combine(orderOne, orderTwo)
-  val orderMonoidEmpty = Monoid[Order].empty
+  val totalOrder = Order(orderOne.totalCost + orderTwo.totalCost, orderOne.quantity + orderTwo.quantity)   // native method
+
+  val orderMonoidCombine = Monoid[Order].combine(orderOne, orderTwo)   // alternative syntax for .combine(x:A. y:A)
+
+  val combineOrders: Order = orderOne |+| orderTwo // Alias for .combine()
+
+  val orderMonoidEmpty = Monoid[Order].empty    // this is whats defines a Monoid
 
   val opt3: Option[Int] = Option(1) |+| Option(2)
 
@@ -132,7 +134,7 @@ class Monoids {
   //  We can also write generic code that works with any type for which we have an instance of Monoid:
 
   def addAll[A](values: List[A])(implicit monoid: Monoid[A]): A =
-    values.foldRight(monoid.empty)(_ |+| _) // guess foldLeft or Right works here tbh since associativity
+    values.foldRight(monoid.empty)(_ |+| _) // guess foldLeft or Right works here since associativity??
 
   val addListOfNums: Int = addAll(List(1, 2, 3))
 
@@ -143,19 +145,22 @@ object MonoidRunner extends App {
 
   val myMonoid = new Monoids
 
-  implicit val catCombinerHelper: Monoid[Cat] = myMonoid.catCombinator
+ println(myMonoid.combineOrders)
+ println(myMonoid.totalOrder)
 
-  val createOrangeRagdoll2: Cat = myMonoid.orangeCat |+| myMonoid.ragdollCat
-
-  val sayWhiteMessage: String = myMonoid.catBot(myMonoid.catV2)
-
-//  println(myMonoid.orangeCat)
-//  println(myMonoid.ragdollCat)
-//  println(myMonoid.createOrangeRagdoll)
-//  println(createOrangeRagdoll2)
-
-  println(sayWhiteMessage)
-  println(myMonoid.catBot(myMonoid.catV3))
+//  implicit val catCombinerHelper: Monoid[Cat] = myMonoid.catCombinator
+//
+//  val createOrangeRagdoll2: Cat = myMonoid.orangeCat |+| myMonoid.ragdollCat
+//
+//  val sayWhiteMessage: String = myMonoid.catBot(myMonoid.catV2)
+//
+////  println(myMonoid.orangeCat)
+////  println(myMonoid.ragdollCat)
+////  println(myMonoid.createOrangeRagdoll)
+////  println(createOrangeRagdoll2)
+//
+//  println(sayWhiteMessage)
+//  println(myMonoid.catBot(myMonoid.catV3))
 
 
 }

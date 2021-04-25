@@ -1,11 +1,11 @@
-package learnCatsAndStuff.semigroupal
+package learnCatsAndStuff.applicativeExamples
 
 import cats.Monoid
-import cats.instances.int._ // for Monoid
-import cats.instances.invariant._ // for Semigroupal
-import cats.instances.list._ // for Monoid
-import cats.instances.string._ // for Monoid
-import cats.syntax.apply._ // for imapN
+import cats.instances.int._
+import cats.instances.invariant._
+import cats.instances.list._
+import cats.instances.string._
+import cats.syntax.apply._
 import cats.syntax.semigroup._ // for |+|
 
 class Apply2 {

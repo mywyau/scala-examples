@@ -2,6 +2,7 @@ package learnCatsAndStuff.monads
 
 import cats.Id
 import cats.data.WriterT
+import cats.implicits._
 
 /*
   The Writer Monad
@@ -144,4 +145,7 @@ object WriterRunner extends App {
 
   println("\n" + writerMonad.swapWriter3b.run + " - used .swap") // swap - we can switcheroo the log and result via .swap
 
+
+  val a: Either[String, Int] = Left("fail")
+  val b: Either[String, Int] = Right(13)
 }

@@ -1,0 +1,71 @@
+docker commands
+
+docker image rm <redis>      removes an image
+docker image inspect redis
+docker image ls --digests
+docker image ls
+docker system info
+docker image pull redis
+docker version
+docker ps
+
+images live in registries dockerhub, but other hubs like amazon. you pull images from registries
+
+registry/repo/image
+
+docker.io/redis/latest
+
+docker can fill stuff in implicitly sometimes e.g. figure out you wanted redis/latest
+
+docker images can have multiple tags but share the same image id
+
+just because something is called latest doesnt mean it actually is the latest version since it could just be a tag
+
+images are just a bunch of layers (of needed files) coupled with a json config
+
+json manifest contains each layers content hash which defines each layer. So when you pull you retrieve each layer separately but when you push up it compresses all the layers
+with their respective content hashes (sha:fjksdbfjdsbvjksdkbsdkjb34u38h3rjbj4b3) and is pushed up to a registry.
+
+If the content hashes are used and pushed up in the compressed layers and json config it fails since the registry uses a distribution hash for each layer in the compressed version
+this is generated for you when the compression is carried out in the push. Hench when you push up new sha codes are generated for the remote registry to check against.
+
+tldr local = content hashes for each layer, remote registry = distribution hashes to check things arrived correctly in compressed form.
+
+this low level detail with tags, hashes, compression, pushing and pulling helps with keeping track if things go wrong.
+
+dockerhub is the main registry, we store docker images in repositories kinda like github, divided with official and unofficial
+
+in theory official stuff is vetted so is more trustworthy
+
+digests == hashes kinda the same thing
+
+best practices
+
+keep your images small, less attack vectors, less bugs and vulnerabilities. modularity is best
+use official and trustworthy stuff
+avoid latest tag, since latest today may not be latest tomorrow :/
+
+images are a template for starting containers and are Read-Only
+
+composed of a config file and layers of necessary files/packages/libraries etc.
+config tells it how to run the container, which ports to expose, set the environment and start the package app
+
+possible to start multiple containers per image
+each container get it's own thin writable layer to store changes for each container
+layer data does not change
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
