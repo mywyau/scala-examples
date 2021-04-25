@@ -1,0 +1,29 @@
+git config --global user.name "Mikey Yau"
+git config --global user.email "Mikey Yau"
+git config --edit --global  opens the global git config, can set a code mode
+
+git config     //config the tooling
+
+git init      //initialise a git local repo
+
+git clone     //download a project from remote
+
+git add       //prepare a file to staging
+
+git commit    //mark it for committing
+
+git status
+
+mkdir <directory>
+git init            // initialise git in the current directory
+
+when you make a new file it is untracked
+
+git add <file>    will track that file
+git add .    will tell git to track all files
+
+git commit -m "a message"
+git log     // lets you see the commit history
+
+git commit -am "new files"   // does a git add -A and also a message you pass as a parameter
+

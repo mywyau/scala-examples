@@ -1,4 +1,4 @@
-package learnCatsAndStuff.semigroupal
+package learnCatsAndStuff.applicativeExamples
 
 import cats.instances.option._
 import cats.syntax.apply._ // for tupled and mapN
@@ -27,7 +27,7 @@ class Apply1 {
     values:*/
 
   case class Cat(name: String, born: Int, color: String)
-
+                              //F[A]
   val catify: Option[Cat] = (Option("Garfield"), Option(1978), Option("Orange & Black")).mapN(Cat.apply)
   // res9: Option[Cat] = Some(Cat(Garfield,1978,Orange & black))
 

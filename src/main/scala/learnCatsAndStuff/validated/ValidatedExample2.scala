@@ -1,11 +1,10 @@
 package learnCatsAndStuff.validated
 
 import cats.Semigroupal
-import cats.Semigroupal._
 import cats.data.Validated
-import cats.data.Validated.Valid
-import cats.syntax.validated._ // for valid and invalid extension syntax
+import cats.implicits._
 
+case class VeryConvenient(i: Int, j: Int, k: String, l: Boolean)
 
 class ValidatedExample2 {
 
@@ -110,5 +109,5 @@ class ValidatedExample2 {
 
 object ValidatedExample2 extends App {
 
-
+  val validatedExample2 = new ValidatedExample2
 }

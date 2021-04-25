@@ -1,0 +1,32 @@
+small images
+
+less attack surface
+minimal OS and packages
+
+usually start with a bloated image
+
+docker container run
+docker run
+
+docker container run -it alpine sh   // -it "interactive terminal" lets you log into the container
+
+will pull down alpine image, spin up a container and attach your terminal cursor to the shell in the container
+
+ctrl+p+q
+
+docker container run -d alpine sleep 1d        detached or daemon mode so will not grab your terminal like the prior command, sleep command tells it to stop running for a while
+
+docker container stop <id/name>          status == Exited     id can be a few characters for uniqueness, stop does not remove data
+docker container start <id/name>         uptime
+
+docker container exec -it 60 sh    exec starts a new additional process
+
+
+
+
+
+
+
+
+
+

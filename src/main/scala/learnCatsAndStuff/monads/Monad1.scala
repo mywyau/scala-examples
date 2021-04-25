@@ -50,7 +50,8 @@ trait MikeyMonad[F[_]] {
   def map[A, B](value: F[A])(func: A => B): F[B] = {
     val f: A => F[B] = (a: A) => pure(a = func(a))
     // pure takes func :: A -> B, when func is given an value:A type it converts it into a value:B type. pure then put that B
-    // into a F[_] container so pure(func(a)) produces a F[B] which is the desired return type
+    // into a F[_] container so pure(func(a)) produces a F[B] which is the desired return type   notice how val f type is like a kleisli arrow A => F[B]
+    //This is because monads can compose kleisli arrows
     flatMap(value)((a: A) => pure(func(a)))
   }
 }
@@ -126,8 +127,7 @@ class Monad1 {
 
   // The Identity Monad
 
-  //  .sumSqaure method works well on Options and Lists but we can’t call it passing in
-  //  plain values:
+  //  .sumSquare method works well on Options and Lists but we can’t call it passing in plain values:
   // sumSquare(3, 4) would blow up since they are not wrapped in a monad/ plain Ints are not monadic
 
   /*  It would be incredibly useful if we could use sumSquare with parameters that
@@ -158,7 +158,7 @@ class Monad1 {
   val a = Monad[Id].pure(3)
   val b = Monad[Id].flatMap(a)(_ + 1)
 
-  val addTwoMonads =
+  val addTwoMonads: Id[Int] =
     for {
       x <- a
       y <- b

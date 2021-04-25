@@ -1,10 +1,11 @@
-package learnCatsAndStuff.semigroupal
+package learnCatsAndStuff.applicativeExamples
 
 import cats.Semigroupal
-import cats.instances.future._ // for semigroupal
+import cats.instances.future._
+
+import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent._
 import scala.concurrent.duration._
-import scala.concurrent.ExecutionContext.Implicits.global
 import scala.language.higherKinds
 
 class Apply3 {

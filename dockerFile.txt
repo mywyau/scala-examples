@@ -1,0 +1,127 @@
+Containerization of an App
+
+bridging dev an ops
+
+app code  -> dockerfile -> docker image build command -> image
+
+Dockerfile <-- always capitalized and put in root directory of your app/project
+
+liust of key value pairs kinda
+all uppercase docker commands e.g. FROM
+
+e.g. example project directory is calles ./psweb
+from ./psweb as our project add dockerfile
+
+Example
+-------------------
+
+FROM alpine        // always start with FROM   base layer  like the pizza base
+
+LABEL maintainer="nigelpoulton@hotmsail.com"    // documentation - metadata can be anything descriptive
+
+RUN apk add --update nodejs nodejs-npm     //adds a new layer  since we're adding software
+
+COPY ./src                                 // copy source code into new image as new layer, pulls source code into a layer
+
+WORKDIR /src                                // metadata not a layer some commands create metadata not layers
+
+RUN npm install                             //build dependancies
+
+EXPOSE 8080                                 // metadata - port
+
+ENTRYPOINT ["node", "./app.js"]             // metadata, relative url from ./src  or the app
+
+-------------------
+end of example
+
+from directory of sourcecode and dockerfile
+
+run
+
+docker image build -t psweb.  // -t adds a tag  e.g. latest
+docker build   // aslo works
+
+to build and tag
+
+docker image ls   -- will show your containers
+
+docker container run -d --name web1 -p 8080:8080 psweb
+
+//  -d   == detached so it doesnt steal the current terminal, spins up a separate instance
+//  --name   == assign it a name for the container
+//  -p   == maps the port
+// run it from the psweb image we just built
+
+if app is on the right architecture docker keeps it simple, raspberry pi, linux, windows etc. just make sure the architecture you choose makes sense
+
+Dockerfile is read like a script as text instructions
+always starts with a FROM instruction
+productions should be specific with tags
+
+build context - location of your code
+
+psweb has all of our souce code
+
+docker image build -t tag .    in the build context figures out to use current directory,
+docker image build -t tag /home/ubuntu/psweb/    explicit build context if working in another shell and not working in the correct build context
+
+able to nest stuff since everything is read recursively so everything within /home/ubuntu/psweb/ and lower is stuffed into the image
+if say you had tons of pointless folders and files in psweb then you're wasting resources building it all into an image.
+keep is clean and concise with files/code
+
+docker client -> send context -> docker daemon
+
+build context can be a remote git repo
+
+point to a git repo
+start with a standard build command
+
+docker build -t psweb https://github.com/nigelpoulton/psweb.git  <--- this end bit is from the git clone/download button, copy ssh/https address i.e. the git repo address
+
+daemon pulls from remote github and builds a container from it so doesnt have to be local.
+e.g say you are developing using github as a remote repo, local is out of sync with git master repo and you are certain you wish to build an image from the code in github master
+then rather than pull it down and mess about with build context locally, just build an image from github.
+
+building from github can build with intermediate containers then removes them to only be left with layers for our image
+
+docker history psweb   -- gives you history of the image
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

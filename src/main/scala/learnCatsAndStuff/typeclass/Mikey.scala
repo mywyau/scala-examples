@@ -1,4 +1,5 @@
 package scala.learnCatsAndStuff.typeclass
+import cats.implicits._
 
 // My own totally original Sum algebraic data type
 
@@ -84,7 +85,7 @@ object MikeyObjectSyntax {
   def objectWayToMikeyType[A](value: A)(implicit mikey: MikeyWriter[A]): Mikey = mikey.mikeyWrite(value)
 }
 
-object MikeyInterfaceSyntax {
+object MikeyInterfaceSyntax {  //extension syntax
 
   implicit class MikeyWriterOps[A](value: A) {
 
