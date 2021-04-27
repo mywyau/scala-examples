@@ -1,4 +1,4 @@
-package learnCatsAndStuff.applicativeExamples
+package learnCatsAndStuff.applicativeExamples.miscExamples
 
 import cats.instances.option._
 import cats.syntax.apply._ // for tupled and mapN

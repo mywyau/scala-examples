@@ -1,4 +1,4 @@
-package learnCatsAndStuff.applicativeExamples
+package learnCatsAndStuff.applicativeExamples.miscExamples
 
 import cats.Monoid
 import cats.instances.int._

@@ -2,6 +2,18 @@ import sbt.Keys.libraryDependencies
 
 ThisBuild / scalaVersion := "2.12.10"
 
+autoCompilerPlugins := true
+
+val kindProjector = addCompilerPlugin("org.typelevel" % "kind-projector" % "0.11.3" cross CrossVersion.full)  // doesnt work wip
+addCompilerPlugin("org.typelevel" % "kind-projector" % "0.11.3" cross CrossVersion.full)  // doesnt work wip
+
+libraryDependencies ++= (scalaBinaryVersion.value match {   // doesnt work wip
+  case "2.10" =>
+    compilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full) :: Nil
+  case _ =>
+    Nil
+})
+
 lazy val hello = (project in file("."))
   .settings(
 
@@ -13,9 +25,10 @@ lazy val hello = (project in file("."))
     libraryDependencies += "com.typesafe.play" %% "play-json" % "2.6.9",
     libraryDependencies += "org.typelevel" %% "cats-core" % "2.0.0",
     scalacOptions += "-Ypartial-unification",
-    scalacOptions += "-language:higherKinds"   // for higher kinds
+    scalacOptions += "-language:higherKinds", // for higher kinds
+    kindProjector
+  )
 
-)
 
 lazy val testSettings: Seq[Def.Setting[_]] = Seq(
   fork := true,

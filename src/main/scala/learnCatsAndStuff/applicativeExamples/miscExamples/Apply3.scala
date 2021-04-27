@@ -1,4 +1,4 @@
-package learnCatsAndStuff.applicativeExamples
+package learnCatsAndStuff.applicativeExamples.miscExamples
 
 import cats.Semigroupal
 import cats.instances.future._
