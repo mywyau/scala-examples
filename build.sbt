@@ -4,10 +4,10 @@ ThisBuild / scalaVersion := "2.12.10"
 
 autoCompilerPlugins := true
 
-val kindProjector = addCompilerPlugin("org.typelevel" % "kind-projector" % "0.11.3" cross CrossVersion.full)  // doesnt work wip
-addCompilerPlugin("org.typelevel" % "kind-projector" % "0.11.3" cross CrossVersion.full)  // doesnt work wip
+val kindProjector = addCompilerPlugin("org.typelevel" % "kind-projector" % "0.11.3" cross CrossVersion.full)  // kinda work wip
+addCompilerPlugin("org.typelevel" % "kind-projector" % "0.11.3" cross CrossVersion.full)  // kinda work wip
 
-libraryDependencies ++= (scalaBinaryVersion.value match {   // doesnt work wip
+libraryDependencies ++= (scalaBinaryVersion.value match {   // kinda work wip
   case "2.10" =>
     compilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full) :: Nil
   case _ =>
@@ -17,7 +17,7 @@ libraryDependencies ++= (scalaBinaryVersion.value match {   // doesnt work wip
 lazy val hello = (project in file("."))
   .settings(
 
-    name := "scala-examples",
+    name := "scala-notes-and-examples",
 
     libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % "1.1.2",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test,
