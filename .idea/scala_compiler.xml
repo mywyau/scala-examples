@@ -4,12 +4,22 @@
     <option name="postfixOps" value="true" />
     <option name="higherKinds" value="true" />
     <option name="existentials" value="true" />
-    <profile name="sbt 1" modules="scala-examples,scala-exmaples">
+    <profile name="sbt 1" modules="scala-exmaples">
       <option name="higherKinds" value="true" />
       <parameters>
         <parameter value="-Ypartial-unification" />
         <parameter value="-Ypartial-unification" />
       </parameters>
+    </profile>
+    <profile name="sbt 2" modules="scala-examples">
+      <option name="higherKinds" value="true" />
+      <parameters>
+        <parameter value="-Ypartial-unification" />
+        <parameter value="-Ypartial-unification" />
+      </parameters>
+      <plugins>
+        <plugin path="$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/kind-projector_2.12.10/0.11.3/kind-projector_2.12.10-0.11.3.jar" />
+      </plugins>
     </profile>
   </component>
 </project>

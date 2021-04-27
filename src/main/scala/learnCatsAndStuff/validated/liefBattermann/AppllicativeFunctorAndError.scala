@@ -1,8 +1,8 @@
-package learnCatsAndStuff.validated.webExamples
+package learnCatsAndStuff.validated.liefBattermann
 
 import cats._
 import cats.data.{NonEmptyList, Validated}
-import learnCatsAndStuff.validated.webExamples.UserValidator.userValidatorIdInterpreter
+import learnCatsAndStuff.validated.liefBattermann.UserValidator.userValidatorIdInterpreter
 
 // import cats._
 // import cats.data._
@@ -42,16 +42,16 @@ object UserValidator {
   def validate[F[_] : UserValidator, E](name: String, age: Int, email: String): F[User] =
     UserValidator[F].createValidUser(name, age, email)
 
-  val userValidatorIdInterpreter = new UserValidator[Id] { // typeclass instance
+  val userValidatorIdInterpreter = new UserValidator[Id] { // typeclass instance using Id as the F[_] so no change
 
     override def createValidUser(name: String, age: Int, email: String): Id[User] =
       User(name, age, email)
   }
 }
 
-object ValidationObjOne {
+object ValidationObjOne extends App {
 
-  implicit val userValidatorInterpreterImp = userValidatorIdInterpreter
+  implicit val userValidatorInterpreterImp = userValidatorIdInterpreter   // this uses Id context as a morphism to produce and preserve a User type
 
   println(UserValidator.validate("John", 25, "john@example.com"))
   // User(John,25,john@example.com)
@@ -76,18 +76,18 @@ object ApplicativeFunctorExample {
 
   val curriedAdd: Int => Int => Int = etaExpandedAdd.curried // still pretty much the same function as the two above it just curried.
 
+  // before the first <*> the add function is lifted into an Option so becomes Option[Int => Int => Int]
   (add _).curried.pure[Option] <*> Option(2) <*> Option(5) //remember pure lifts the function into the desired context. In this case Option
   // .curried converts the (Int, Int) to a (Int) => (Int) which is then used to transform add function from '(Int, Int) => Int' to 'Int => Int => Int'
 
-  // <*>  - this is applicative functor, syntax sometimes aka 'tie-fighter' from Star Wars
+  // <*>  - this is apply from weaker Apply in cats, (similar to / part of Applicative functor), syntax sometimes aka 'tie-fighter' from Star Wars
 }
 
 object ValidationObjTwo {
 
   implicit val userValidatorInterpreterImp = userValidatorIdInterpreter
 
-  def userValidator[F[_], E](mkError: UserValidationError => E)(
-    implicit A: ApplicativeError[F, E]): UserValidator[F] =
+  def userValidator[F[_], E](mkError: UserValidationError => E)(implicit A: ApplicativeError[F, E]): UserValidator[F] =
     new UserValidator[F] {
 
       def validateName(name: String): F[String] =
@@ -111,18 +111,28 @@ object ValidationObjTwo {
 
 object ImplementFUserValidatorTry extends App {
 
-  import learnCatsAndStuff.validated.webExamples.ValidationObjTwo.userValidator
+  import learnCatsAndStuff.validated.liefBattermann.ValidationObjTwo.userValidator
   import scala.util.Try
 
-  val userValidatorTryInterpreter =
-    userValidator[Try, Throwable]((err: UserValidationError) => new Throwable(err.toString))
+//  val userValidatorTryInterpreter =
+//    userValidator[Try, Throwable]((err: UserValidationError) => new Throwable(err.toString))
 
-  type PartiallyAppliedEither[A] = Either[UserValidationError, A] // needs this for ApplicativeError or it complains
+//  type PartiallyAppliedEither[A] = Either[UserValidationError, A] // needs this for ApplicativeError or it complains, classic partially applied type
 
-  val userValidatorEitherInterpreter =
-    userValidator[PartiallyAppliedEither, UserValidationError](identity)
+//  type aa = Lambda[A => (A, A)]
 
-  implicit val tryInterpreter = userValidatorTryInterpreter
+//  type PartiallyAppliedEither2 = Lambda[A => Either[UserValidationError, A]]
+
+//  val userValidatorEitherInterpreter =
+//    userValidator[PartiallyAppliedEither, UserValidationError](identity)
+
+  implicit val userValidatorEitherInterpreter2 =
+    userValidator[Either[UserValidationError, *], UserValidationError](identity)   // plugin magic
+
+//    val userValidatorEitherInterpreter3 =
+//    userValidator[PartiallyAppliedEither2, UserValidationError](identity)   // plugin magic
+
+//  implicit val tryInterpreter = userValidatorTryInterpreter
 
   println(UserValidator.validate("John", 25, "john@example.com"))
 
@@ -138,7 +148,7 @@ object ImplementFUserValidatorTry extends App {
 
 object ImplementFUserValidatorOption extends App {
 
-  import learnCatsAndStuff.validated.webExamples.ValidationObjTwo.userValidator
+  import learnCatsAndStuff.validated.liefBattermann.ValidationObjTwo.userValidator
 
   val userValidatorOptionInterpreter =
     userValidator[Option, Unit](_ => ())
@@ -164,7 +174,12 @@ object ImplementFUserValidatorOption extends App {
   //  // type projection implementing the same type anonymously (without a name).
   //  ({type L[A] = Either[Int, A]})#L
 
+  // https://github.com/typelevel/kind-projector
+
   type MyValidated[A] = Validated[NonEmptyList[UserValidationError], A]
+
+//  type tupleKindProjection = Tuple2[*, Double]   // this kind projection plugin style is only for Scala 2.x since Dotty will most likely have native syntax for it
+//  type tupleKindProjection2[A] = Lambda[A => Tuple2[A, Double]]
 
   //  val h = attemptDivideApplicativeError[({type T[A] = Validated[String, A]})#T](30, 10)
 
@@ -185,7 +200,7 @@ object ImplementFUserValidatorOption extends App {
 
 object ImplementFUserValidatorEither extends App {
 
-  import learnCatsAndStuff.validated.webExamples.ValidationObjTwo.userValidator
+  import learnCatsAndStuff.validated.liefBattermann.ValidationObjTwo.userValidator
 
   type PartiallyAppliedEither[A] = Either[UserValidationError, A] // needs this for ApplicativeError or it complains
 
