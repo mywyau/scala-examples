@@ -11,7 +11,7 @@
         <parameter value="-Ypartial-unification" />
       </parameters>
     </profile>
-    <profile name="sbt 2" modules="scala-examples">
+    <profile name="sbt 2" modules="scala-examples,scala-notes-and-examples.scala-examples,self_projects.scala-notes-and-examples">
       <option name="higherKinds" value="true" />
       <parameters>
         <parameter value="-Ypartial-unification" />
