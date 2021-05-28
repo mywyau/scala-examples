@@ -27,3 +27,19 @@ git log     // lets you see the commit history
 
 git commit -am "new files"   // does a git add -A and also a message you pass as a parameter
 
+git push origin <branch name> --force-with-lease
+
+
+git rebase -i <commit key>   of the commit before the subsequent you wish to squish together
+
+then reword the commit key one and fixup the subsequent
+
+some vim commands
+hit 'c' to start editing
+hit 'esc' to stop typing
+hit ':' to start the quitting process
+hit ':q' to just quit and save (short for quit)
+hit ':q!' to quit and discard changes
+hit ':wq' to quit and save the changes
+hit ':wq!' to quit and save the changes even if the file was read only
+

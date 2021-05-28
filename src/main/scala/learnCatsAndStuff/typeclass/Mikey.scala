@@ -1,5 +1,4 @@
-package scala.learnCatsAndStuff.typeclass
-import cats.implicits._
+package learnCatsAndStuff.typeclass
 
 // My own totally original Sum algebraic data type
 
@@ -33,7 +32,7 @@ trait MikeyWriter[Z] {
 
 /*   Type classes do not come as standard in Scala so you need to make your own
 
-  A Type Class Recipe
+  A Type Class Pattern Recipe
 
     1. create object as a instance for your type class
     2. implicit val which contains an 'new' instance of your parametric type trait with a concrete type e.g. for Strings or even your own custom types like sushi
@@ -54,12 +53,11 @@ object ObjImplicitMikeyWriterInstance {
 
   implicit val personWriter = new MikeyWriter[Person] { //or define a new instance of typeclass where it will use type inference
 
-    override def mikeyWrite(value: Person): Mikey = MObject(
-      Map(
+    override def mikeyWrite(value: Person): Mikey =
+      MObject(Map(
         "name" -> MString(value.name),
         "email" -> MString(value.email)
-      )
-    )
+      ))
   }
 
   implicit val intWriter: MikeyWriter[Int] = {
@@ -85,7 +83,7 @@ object MikeyObjectSyntax {
   def objectWayToMikeyType[A](value: A)(implicit mikey: MikeyWriter[A]): Mikey = mikey.mikeyWrite(value)
 }
 
-object MikeyInterfaceSyntax {  //extension syntax
+object MikeyInterfaceSyntax { //extension syntax
 
   implicit class MikeyWriterOps[A](value: A) {
 
@@ -101,7 +99,7 @@ object MikeyInterfaceSyntax {  //extension syntax
   def implicitly[A](implicit value: A): A = value
 */
 
-object ImplicitlyMethod extends ImplicitMikeyTrait {   //  <--- the trait hold the implicit val for type MikeyWriter[Boolean] so we can use via Scala implicitly
+object ImplicitlyMethod extends ImplicitMikeyTrait { //  <--- the trait hold the implicit val for type MikeyWriter[Boolean] so we can use via Scala implicitly
 
   import ObjImplicitMikeyWriterInstance._ // which contains all the implicit implementations of our type class, could make as a a trait to mix in
 
@@ -112,6 +110,7 @@ object ImplicitlyMethod extends ImplicitMikeyTrait {   //  <--- the trait hold t
   val implicitlyMikeyPerson: Mikey = implicitly[MikeyWriter[Person]].mikeyWrite(Person(name = "Mokie", email = "MokieMokie@Gmail.com"))
 
   def implicitMikeyBoolean: Mikey = implicitly[MikeyWriter[Boolean]].mikeyWrite(true)
+  // for this method implicitly is able to see the type class instance of .mikeyWrite() for a Bool, the boolean version does not come from the imported object
 
   // implicitly looks into the ObjImplicitMikeyWriterInstance._ and then lets you use the three implicit values for String, Int, & Person
 

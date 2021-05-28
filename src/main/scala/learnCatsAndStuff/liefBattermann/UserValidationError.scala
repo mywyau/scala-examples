@@ -1,4 +1,4 @@
-package learnCatsAndStuff.validated.liefBattermann
+package learnCatsAndStuff.liefBattermann
 
 sealed trait UserValidationError
 

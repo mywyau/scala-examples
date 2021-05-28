@@ -1,4 +1,4 @@
-package learnCatsAndStuff.validated.liefBattermann
+package learnCatsAndStuff.liefBattermann
 
 import cats.implicits._
 
@@ -14,7 +14,7 @@ object OptionImplementFUserValidator extends App {
 
   // https://github.com/typelevel/kind-projector
 
-  import learnCatsAndStuff.validated.liefBattermann.UserValidationLogic.userValidator
+  import UserValidationLogic.userValidator
 
   val userValidatorOptionInterpreter =
     userValidator[Option, Unit](_ => ())

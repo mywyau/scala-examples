@@ -1,7 +1,7 @@
-package learnCatsAndStuff.validated.liefBattermann
+package learnCatsAndStuff.liefBattermann
 
 import cats.data.{NonEmptyList, Validated}
-import learnCatsAndStuff.validated.liefBattermann.UserValidationLogic.userValidator
+import UserValidationLogic.userValidator
 
 object ValidatedImplementFUserValidator extends App {
 

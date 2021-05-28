@@ -1,10 +1,10 @@
-package learnCatsAndStuff.validated.liefBattermann
+package learnCatsAndStuff.liefBattermann
 
 import cats.implicits._
 
 object TryImplementFUserValidator extends App {
 
-  import learnCatsAndStuff.validated.liefBattermann.UserValidationLogic.userValidator
+  import UserValidationLogic.userValidator
   import scala.util.Try
 
   val userValidatorTryInterpreter =
