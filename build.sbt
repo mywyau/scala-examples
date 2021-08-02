@@ -34,6 +34,23 @@ lazy val hello = (project in file("."))
   )
 
 
+lazy val hello2 = (project in file("."))
+  .settings(
+
+    name := "scala-notes-and-examples",
+
+    libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % "1.1.2",
+    libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "3.1.2" % Test,
+    libraryDependencies += "com.typesafe.play" %% "play-json" % "2.6.9",
+    libraryDependencies += "org.typelevel" %% "cats-core" % "2.0.0",
+    scalacOptions += "-Ypartial-unification",
+    scalacOptions += "-language:higherKinds", // for higher kinds
+    kindProjector,
+    libraryDependencies += "org.scalamock" %% "scalamock" % "5.1.0" % Test,
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.0" % Test
+  )
+
+
 lazy val testSettings: Seq[Def.Setting[_]] = Seq(
   fork := true,
   javaOptions ++= Seq(

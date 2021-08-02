@@ -42,5 +42,4 @@ object ApTieFighterExample extends App {
   twentySomethings.foreach(println)  // prints Travis Dennis
 
   userBase.filter(user => user.age >= 20 && user.age < 30).map(_.name).foreach(println)
-
 }

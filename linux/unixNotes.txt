@@ -1,0 +1,79 @@
+rm *
+man
+rm file?   - removes all files with a single suffix so file12 would not be removed
+rm -rf directoryYouWishToDelete
+pwd
+mkdir yourDirectory1
+ls
+history
+ls -a
+ls -h
+ls -h
+nano
+touch file1 file2 file3
+touch file1-file2-file3
+touch "file1 file2 file3"
+
+cd ..
+cd ~
+cd /path/to directory/
+
+cp file1 newdata/
+cp file* newdata/    globbing - copy all files starting with name file
+
+mv ../file* .  moves all files starting with "file" from parent directory to the current directory denoted with '.'
+
+locate adduser
+
+sudo nano /etc/adduser.conf
+
+clear
+
+sudo updatedb
+
+cat /var/log/syslog
+cat /etc/group | grep ubuntu
+cat /etc/group | grep ubuntu >> newfile
+cat /etc/group | grep ubuntu > exisiting file
+
+head /etc/group
+tail /etc/group
+
+less
+
+cut -d: -f3 /etc/       -d  tells the command the next colon is a delimiter, f3 gets the 3 field
+cut -d: -f3 /etc/ | sort -n     sort descending
+
+>> replace existing text in file
+>>> append text to file
+
+
+echo $myval
+
+tar xzf latest.tar.gz     tar tape archive, gz stands for gzip algorithm other algos out there.    xzf stands for x = extract,  z = zip and f = file name that follows immediately
+tar czf newarchive.tar.gz wordpress/         c = create and this command takes two params the archive name and directory/files to compress
+
+always test archives so that you know they are not corrupted so check them before storing
+
+tar cf largerarchive.tar wordpress/      no gzip compression algo applied
+gzip largerarchive.tar                      can still apply gzip afterwards
+
+bzip largerarchive.tar        burrows wheeler compression algo
+
+unzip someZipFile.zip           unzips .zip files
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

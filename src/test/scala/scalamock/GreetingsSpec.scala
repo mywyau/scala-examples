@@ -16,7 +16,7 @@ class GreetingsSpec extends WordSpecScalaMockBase {
 
         (mockFormatter.format(_:String))
           .expects("Mr Mikey")
-          .returns("Ah, Mr Mikey. I've been expecting you")
+          .returns("Ah, Mr Bond. I've been expecting you")
           .once()
 
 //        (mockFormatter.format _)  // alternative syntax kinda
@@ -45,7 +45,7 @@ class GreetingsSpec extends WordSpecScalaMockBase {
 
         greetings.sayHello(bond, mockFormatter)
 
-        (mockFormatter.format _).verify(mikey).once()
+//        (mockFormatter.format _).verify(mikey).once()
       }
     }
 

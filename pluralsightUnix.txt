@@ -1,0 +1,117 @@
+
+'keyword'  denotes a keyword within the '' , the '' is just to help identify the keyword but is not actually used unless specified
+
+mkdir reports   creates a directory called reports
+grep H6 shipments.csv > reports/h6.csv
+
+mikeyGrep example was found on line 5 of the file mikey.txt
+
+ls -l <your file>  checks the permissions
+
+du   = disk usage          -h       human readable
+df   = disk storage space  -h
+
+du -sch </directory/path>*          e.g.  du -sch /var/log/*, will let you summarize totals for the directory and each subdirectory within
+du -sch </directory/path>*          To view only the grand total, remove the c from -sch.
+
+To find out the architecture, number of cores, vendor id, model name, and speed (and more) of the CPU(s), you can use lscpu.
+On the other hand, the free command (which, by the way, also supports the -h for returning output in human-readable form) shows the amount of free and used memory in the system.
+
+head <file>    will show the first ten lines of a file
+tail <file>   will show the last ten lines of a file
+
+If you are interested in inspecting a different number of lines from the beginning or the bottom of the file, you can use head -n or tail -n followed by an integer and the name of the file.
+
+head -n 8 <file>
+tail -n 23 <file>
+
+grep <character class or regex>
+grep mikeyGrep mikey.txt
+
+grep -i mikeyGrep mikey.txt       the -i tag ignores case
+
+grep -E 'svm|vmx' /proc/cpuinfo    -E is for regex 'E'xpressions
+
+To search for system objects (most likely, files or directories we want to locate or work with), we'll use 'find'
+
+First, we need to indicate the directory where we must start the search, the object type, and the name.
+Although there are other filter criteria that we can add to narrow down our search, this is a typical example of the use of find.
+
+For example,
+
+    find /etc -type f -name sshd_config
+
+will search for a regular file (type f) named sshd_config starting at /etc.
+
+To extract sections from each line in a file, 'cut' will be our best ally.
+
+cut -d''
+
+touch   creates a file
+
+touch <existing file name>  this will update the modification time of the existing file to the current time this command is executed
+
+
+To initialize a file and add content to it (or overwrite its contents) in a single step,
+we will use the > redirection operator followed by the name of the file. Keep in mind that the redirection
+operator must be preceded by the command whose output will be inserted in the file.
+
+
+For example,
+
+cut -d':' -f1,7 /etc/passwd > usersandshells.txt
+will create a file named usersandshells.txt in the current working directory (if it does not exist previously) or overwrite its contents (if such file exists) with the output of the command.
+
+To avoid overwriting an existing file when adding content, use >> instead. This approach will also initialize the file if it does not exist.
+It is important to not that using > or >> is not a one-size-fits-all solution, but depends on the specific scenario where it is to be utilized.
+
+Most often, you will need to chain two or more commands together so that the output of one is sent as input to the next.
+
+|   pipelines will chain two or more commands together so that the output of one command is the input of the next commands being chained
+
+e.g.
+cut -d':' -f1,7 /etc/passwd | grep student  this would list out the users and their default shell then look for the 'student' user line via grep from the out put of
+cut -d':' -f1,7 /etc/passwd  e.g. would give us a list of users, the grep pulls out the student user
+
+cut -d':' -f1,7 /etc/passwd | sort | uniq
+
+sort and uniq in this combo will sort the unique users from the cut
+
+To illustrate, you can do
+
+cut -d':' -f7 /etc/passwd | sort | uniq
+which will return the default shell(s) for the accounts listed in /etc/passwd. There is a good reason why sort follows
+the first pipeline and then sends its output to uniq and not the other way around. The latter requires its input to be sorted beforehand to return unique lines.
+
+
+Did you know?
+
+The name, “grep”, derives from the command used to perform a similar operation, using the Unix/Linux text editor ed:
+g/re/p
+The grep utilities are a family that includes grep, egrep, and fgrep for searching duties.
+For most uses, you need to use fgrep as it the fastest and only look into strings and words.
+However, typing grep is easy. Hence, it is a personal choice
+
+
+Search and display the total number of times that the string ‘nixcraft’ appears in a file named frontpage.md:
+grep -c 'nixcraft' frontpage.md
+
+You can search recursively i.e. read all files under each directory for a string “192.168.1.5”
+grep -r "192.168.1.5" /etc/
+ or
+grep -R "192.168.1.5" /etc/
+
+You will see result for 192.168.1.5 on a separate line preceded by the name of the file (such as /etc/ppp/options) in which it was found.
+The inclusion of the file names in the output data can be suppressed by using the -h option as follows:
+$ grep -h -R "192.168.1.5" /etc/
+
+grep -w "boo" <file>   -  matches whole words only so would not match boohoo
+
+How to use grep to search 2 different words
+
+Use the egrep command as follows:
+
+egrep -w 'word1|word2' </path/to/file>
+
+
+

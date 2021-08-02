@@ -3,6 +3,8 @@ package learnCatsAndStuff.monoids.gameExample
 import cats.Monoid
 import cats.syntax.semigroup._
 
+import scala.concurrent.Future
+
 sealed trait Monster
 
 case class Slime(level: Int,
@@ -291,6 +293,5 @@ object MonoidExampleRunner extends App {
   //  println(multipleSlimeAddNeutralSlime)
   //
   //  println(3 |+| 3)
-
 
 }
