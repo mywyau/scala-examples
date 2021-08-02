@@ -1,8 +1,11 @@
 package specBase
 
-import org.scalatest.{FlatSpec, Matchers}
 
-trait SpecBase extends FlatSpec with Matchers {
+import org.scalamock.scalatest.MockFactory
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.must.Matchers
+
+trait SpecBase extends AnyFlatSpec with Matchers with MockFactory {
 
   /*
     Stuff you want other tests can have go here

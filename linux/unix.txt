@@ -1,0 +1,5 @@
+sh - most portable shell
+zsh - macos different flavour with some nicities
+bash - standard linux os
+
+

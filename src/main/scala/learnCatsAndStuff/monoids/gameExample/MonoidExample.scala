@@ -3,6 +3,8 @@ package learnCatsAndStuff.monoids.gameExample
 import cats.Monoid
 import cats.syntax.semigroup._
 
+import scala.concurrent.Future
+
 sealed trait Monster
 
 case class Slime(level: Int,
@@ -36,18 +38,21 @@ object MonoidExample {
    - Slimes always inherit the stronger Slime's Element
    - Slimes are pretty slow but as they grow stronger they do become faster. In the case of Slime Fusion the minimum speed a fused Slime can have is 20
    - Multiple Slimes can combine together at once there is no limit of slimes that can fuse at once (strength in numbers),
-     Obviously the stronger Slime that fuses first is the host so overwhelms the others in fusion.
+     Obviously the stronger Slime that fuses first is the host and overwhelms the others in fusion.
    - TODO: The Stats are still all combined for multiple Slimes, however after 5 Slimes combine,
       then additional Slimes only contribute 10% Stat growth add counter to Slime model and update calculation
-   - there can also be stat caps to prevent unfair defence. The defence of a Slime cannot be more than 10x the level
+   - there can also be status caps to prevent unfair defence. The defence of a Slime cannot be more than 10x the level
 
    */
 
   implicit val slimeMonoid: Monoid[Slime] = new Monoid[Slime] {
 
-    // you should probably break up your logic and stats into different typeclasses and stuff but for simple dumb example for now
-    // this is my monoid typeclass instance for Slime I can use Semigroup syntax to combine Slimes in the future
-    // this is definitely not a good way to write out a game obviously
+    /*
+       you should probably break up your logic and stats into different typeclasses and stuff but for simple dumb example for now
+       this is my monoid typeclass instance for Slime I can use Semigroup syntax to combine Slimes in the future
+       this is definitely not a good way to write out a game obviously
+
+    */
 
     override def combine(firstSlime: Slime, secondSlime: Slime): Slime = {
 
@@ -250,21 +255,22 @@ object MonoidExample {
 
   }
 
-//  implicit val intMonoid : Monoid[Int] = new Monoid[Int] {
-//
-//    override def combine(x: Int, y: Int): Int = (x + y) * 3
-//
-//    override def empty: Int = 0
-//  }
+  //  implicit val intMonoid : Monoid[Int] = new Monoid[Int] {
+  //
+  //    override def combine(x: Int, y: Int): Int = (x + y) * 3
+  //
+  //    override def empty: Int = 0
+  //  }
 
 
   //TODO: Make a nicer format to view your slimes or just comment out fusion slimes and respective printlns
-  import SlimeBank._
-//    val fireAndIceSlimeFusion = fireSlime |+| iceSlime
-//    val iceAndThunderSlimeFusion = thunderSlime |+| iceSlime
 
-//    val multipleSlimes: Slime = thunderSlime |+| iceSlime |+| fireSlime |+| iceSlime |+| slimeMonoid.empty // |+| thunderSlime
-//    val multipleSlimesAddNeutralSlime: Slime = multipleSlimes |+| slimeMonoid.empty
+  import SlimeBank._
+  //    val fireAndIceSlimeFusion = fireSlime |+| iceSlime
+  //    val iceAndThunderSlimeFusion = thunderSlime |+| iceSlime
+
+  //    val multipleSlimes: Slime = thunderSlime |+| iceSlime |+| fireSlime |+| iceSlime |+| slimeMonoid.empty // |+| thunderSlime
+  //    val multipleSlimesAddNeutralSlime: Slime = multipleSlimes |+| slimeMonoid.empty
 
 }
 
@@ -273,20 +279,19 @@ object MonoidExampleRunner extends App {
   import MonoidExample._
   import SlimeBank._
 
-//    println(fireAndIceSlimeFusion)
-//    println(iceAndThunderSlimeFusion)
-
-//    val multipleSlimes: Slime = thunderSlime |+| iceSlime |+| fireSlime |+| iceSlime |+| thunderSlime
-  //  val multipleSlimesAddNeutralSlime: Slime = multipleSlimes |+| slimeMonoid.empty
-//    println(multipleSlimes)
-
-//  val multipleSlimeKnights: SlimeKnight = thunderSlimeKnight |+| iceSlimeKnight |+| fireSlimeKnight |+| iceSlimeKnight |+| thunderSlimeKnight
-//    val multipleSlimeAddNeutralSlime: SlimeKnight = multipleSlimeKnights |+| slimeKnightMonoid.empty
-
-//  println(multipleSlimeKnights)
-//  println(multipleSlimeAddNeutralSlime)
-
-//  println(3 |+| 3)
-
+  //  println(fireAndIceSlimeFusion)
+  //  println(iceAndThunderSlimeFusion)
+  //
+    val multipleSlimes: Slime = thunderSlime |+| iceSlime |+| fireSlime |+| iceSlime |+| thunderSlime
+    val multipleSlimesAddNeutralSlime: Slime = multipleSlimes |+| slimeMonoid.empty
+    println(multipleSlimes)
+  //
+  //  val multipleSlimeKnights: SlimeKnight = thunderSlimeKnight |+| iceSlimeKnight |+| fireSlimeKnight |+| iceSlimeKnight |+| thunderSlimeKnight
+  //  val multipleSlimeAddNeutralSlime: SlimeKnight = multipleSlimeKnights |+| slimeKnightMonoid.empty
+  //
+  //  println(multipleSlimeKnights)
+  //  println(multipleSlimeAddNeutralSlime)
+  //
+  //  println(3 |+| 3)
 
 }

@@ -11,13 +11,13 @@ case object Mokie extends Mikey
 
 class KleisliExample {
 
-  val function1: Int => String = (i: Int) => "hello"  //arbitrary implementations
+  val function1: Int => String = (i: Int) => "hello" //arbitrary implementations
   val function2: String => Boolean = (s: String) => true
   val function3: Boolean => Mikey = (b: Boolean) => Foodles
 
   // my goal is to 'chain' we do this through function composition
 
-  val functionComposition: Int => Mikey = function1 >>> function2 andThen function3  // >>> Cats Arrow for andThen
+  val functionComposition: Int => Mikey = function1 >>> function2 andThen function3 // >>> Cats Arrow for andThen
 
   val function1B: Int => Option[String] = (i: Int) => Option("hello") // A => F[B]
   val function2B: String => Option[Boolean] = (s: String) => Option(true)
@@ -28,10 +28,10 @@ class KleisliExample {
   // but what happens when our fucntions have a computational context??? like A => F[B] ??
 
   val function1K: Kleisli[Option, Int, String] = Kleisli((_: Int) => Option("hello")) // A => F[B]   uh oh that sneaky F has foiled our plans of function composition
-  val function2K: Kleisli[Option, String, Boolean] = Kleisli((_: String) => Option(true))  // we can use the Kleisli Arrow hurray
+  val function2K: Kleisli[Option, String, Boolean] = Kleisli((_: String) => Option(true)) // we can use the Kleisli Arrow hurray
   val function3K: Kleisli[Option, Boolean, Mikey] = Kleisli((_: Boolean) => Option(Foodles))
 
-  val functionCompositionK: Kleisli[Option, Int, Mikey] = function1K andThen function2K andThen function3K   //not yet evaluated Kleisli all I have done is chain functions together
+  val functionCompositionK: Kleisli[Option, Int, Mikey] = function1K andThen function2K andThen function3K //not yet evaluated Kleisli all I have done is chain functions together
   val composeSyntax: Kleisli[Option, Int, Mikey] = function3K compose function2K compose function1K
 
   val functionCompositionArrowK: Kleisli[Option, Int, Mikey] = function1K >>> function2K >>> function3K
@@ -52,8 +52,8 @@ object KleisliRunner extends App {
   val kleisliExample = new KleisliExample
 
   println(kleisliExample.functionCompositionK(7).map(_ => Mokie)) // should return Some(Mokie)
-  println(kleisliExample.composeSyntax(7))   // should return Some(Foodles)
+  println(kleisliExample.composeSyntax(7)) // should return Some(Foodles)
   println(kleisliExample.functionComposition(7)) // No Options involved so should return Foodles
-  println(kleisliExample. functionCompositionArrowK(7)) // No Options involved so should return Foodles
+  println(kleisliExample.functionCompositionArrowK(7)) // No Options involved so should return Foodles
   println(kleisliExample.composeAllKleislis)
 }

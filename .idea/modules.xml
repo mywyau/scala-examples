@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/scala-examples.iml" filepath="$PROJECT_DIR$/.idea/modules/scala-examples.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/scala-examples-build.iml" filepath="$PROJECT_DIR$/.idea/modules/scala-examples-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/project.scala-notes-and-examples-build.iml" filepath="$PROJECT_DIR$/.idea/modules/project.scala-notes-and-examples-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/scala-notes-and-examples.iml" filepath="$PROJECT_DIR$/.idea/modules/scala-notes-and-examples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/scala-notes-and-examples-build.iml" filepath="$PROJECT_DIR$/.idea/modules/scala-notes-and-examples-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/self_projects.scala-notes-and-examples.iml" filepath="$PROJECT_DIR$/.idea/modules/self_projects.scala-notes-and-examples.iml" />
     </modules>
   </component>
 </project>
