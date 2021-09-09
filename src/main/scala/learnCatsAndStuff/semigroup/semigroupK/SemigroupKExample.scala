@@ -56,7 +56,7 @@ object SemigroupKExample extends App {
   println(righty |+| righty2)
   println(righty <+> righty2)
 
-  // There’s also a subtle difference in the behaviors of two typeclasses. <+> & |+|
+  // There’s also a subtle difference in the behaviors of the two typeclasses. <+> & |+|
   // The Semigroup will combine the inner value of the Option whereas SemigroupK will just pick the first one.
 
   // So why use semigroupK?  because semigroupK works on the kind F[A] it doesnt care about A but lets you combine based on F[_] not sure on the results tho
@@ -70,6 +70,7 @@ object SemigroupKExample extends App {
   }
 
   /* This works for Option[A] from what I can tell
+
     Intuition: it is best to think of it as operating only at the F[_] level, never looking into the contents.
     SemigroupK has the convention that it should ignore failures and “pick the first winner”. <+> can therefore be used as
     a mechanism for early exit (losing information) and failure-handling via fallbacks:

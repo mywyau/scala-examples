@@ -1,0 +1,22 @@
+-X POST "https://coronavirus-job-retention-scheme.protected.mdtp/scheme?claimType=JRSMAY2021EXTENSION"
+-H 'Content-Type: application/json'
+-d '{
+      	"recordType": "01",
+      	"instanceID": "262203109043867",
+      	"employerRef": "961-XZ00167",
+      	"districtNumber": "961",
+      	"referenceCode": "XZ00167",
+      	"startDate": "20090406",
+      	"creationDate": "20090415",
+      	"endDate": "99991231",
+      	"schemeType": 1,
+      	"businessName": "EMPLOYER ONE LTD",
+    	"businessPostcode": "TF3 4ER",
+     	"correspondenceName": "JONES BUILDERS LTD",
+      	"correspondencePostcode": "TF4 6ER",
+      	"aoDistrict": "754",
+      	"aoTaxType": "P",
+      	"aoCheckChar": "H",
+      	"aoReference": "00002259",
+      	"numberOfEmployees": 1
+      }'

@@ -26,7 +26,6 @@ class KleisliExample {
   //  val functionCompositionB: Int => Mikey = function1B andThen function2B andThen function3B    // nice we have achieved our goal of function composition
 
   // but what happens when our fucntions have a computational context??? like A => F[B] ??
-
   val function1K: Kleisli[Option, Int, String] = Kleisli((_: Int) => Option("hello")) // A => F[B]   uh oh that sneaky F has foiled our plans of function composition
   val function2K: Kleisli[Option, String, Boolean] = Kleisli((_: String) => Option(true)) // we can use the Kleisli Arrow hurray
   val function3K: Kleisli[Option, Boolean, Mikey] = Kleisli((_: Boolean) => Option(Foodles))
@@ -34,7 +33,7 @@ class KleisliExample {
   val functionCompositionK: Kleisli[Option, Int, Mikey] = function1K andThen function2K andThen function3K //not yet evaluated Kleisli all I have done is chain functions together
   val composeSyntax: Kleisli[Option, Int, Mikey] = function3K compose function2K compose function1K
 
-  val functionCompositionArrowK: Kleisli[Option, Int, Mikey] = function1K >>> function2K >>> function3K
+  val functionCompositionArrowK: Kleisli[Option, Int, Mikey] = function1K >>> function2K >>> function3K    // arrow syntax from cats just syntax sugar really
   val composeKArrowSyntax: Kleisli[Option, Int, Mikey] = function3K <<< function2K compose function1K
 
 

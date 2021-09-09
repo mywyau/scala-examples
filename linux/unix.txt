@@ -2,4 +2,93 @@ sh - most portable shell
 zsh - macos different flavour with some nicities
 bash - standard linux os
 
+last | less
+w
+who
+id root
+
+
+users and groups
+
+sudo gives admin privileges for a single command
+
+sudo useradd -m jane
+/etc/skel      skeleton directory for new users
+ls -a
+
+sudo passwd jane    create temp password for new user
+
+assign authority of resources to a group and assign users as members to a group
+
+when in /etc/skel
+
+sudo mkdir /var/secret  example important directory
+sudo groupadd secret-group
+sudo chown :secret-group /var/secret/
+sudo usermod -a -G secret-group jane    -G means to existing group  add jane to secret group
+sudo chmod g+w /var/secret/      g+w add write permissions
+
+jane can do whatever she wants to the contents to the files (resources) of secret group
+
+
+
+linux file permissions
+
+owner
+group
+all users
+
+
+permissions types
+
+permission types can be combined or be used as restrictions for certain users/groups
+
+read       refers to ability to read contents of a file but cannot necessarily write
+write       refers to ability to write contents of a file but cannot necessarily read
+execute    execute/run a file and or view it's contents
+
+you can check file permissions by using the 'ls -l' command whilst working in a directory you wish to check
+
+The permission in the command line is displayed as: _rwxrwxrwx 1 owner:group  example
+
+_ denotes the first variable character which is a special permissions flag which can vary
+first 3 letters rwx is owner permissions
+second 3 letters rwx is group permissions
+last 3 letters rwx is all users permissions
+
+the '1' or integer after the last set of rwx displays the number of hardlinks to the file
+finally the last piece is the owner and group assignment formatted as owner:group   probs who the owner is and the group the permissions are referring to
+
+explicit permission definition
+
+u - owner
+g - group
+o - others
+a - all users
+
+r - read
+w - write
+x - execute
+
+so e.g. _rw_rw_rw 1 mikey/coolClub
+so all three owner, group and all users have read and write access this file or directory is non-executable
+
+so for exmaple we wish to remove the read and write permissions for all users
+
+we enter the    chmod (changemod)   chmod a-rw file1     minus sign to remove rwx permissions
+                                    chmod a+rw file1     plus sign to add the rw permissions
+                                    chmod g+wx file2     will add write and executable to file2 for groups
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -23,7 +23,7 @@ In programming monadic behaviour is formally captured by two behaviours
 
 pure abstracts  over constructors, providing a way to create a new monadic context from a plain value,
 flatMap provides the sequencing step we have already discussed, extracting
-the value fom a context and generating the next context in th sequence.
+the value fom a context and generating the next same context in the sequence.
  */
 
 /*Monad Laws
@@ -48,7 +48,8 @@ trait MikeyMonad[F[_]] {
   def flatMap[A, B](value: F[A])(func: A => F[B]): F[B]
 
   def map[A, B](value: F[A])(func: A => B): F[B] = {
-    val f: A => F[B] = (a: A) => pure(a = func(a))
+    val f: A => F[B] =
+      (a: A) => pure(a = func(a))
     // pure takes func :: A -> B, when func is given an value:A type it converts it into a value:B type. pure then put that B
     // into a F[_] container so pure(func(a)) produces a F[B] which is the desired return type   notice how val f type is like a kleisli arrow A => F[B]
     //This is because monads can compose kleisli arrows

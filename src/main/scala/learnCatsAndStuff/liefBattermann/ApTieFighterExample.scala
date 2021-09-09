@@ -2,8 +2,6 @@ package learnCatsAndStuff.liefBattermann
 
 import cats.implicits._
 
-case class CustomerID(name: String)
-
 object ApTieFighterExample extends App {
 
   def add(a: Int, b: Int) = a + b
@@ -19,8 +17,8 @@ object ApTieFighterExample extends App {
 
   // <*>  - this is apply/ap from weaker Apply in cats, (similar to / part of Applicative functor), syntax sometimes aka 'tie-fighter' from Star Wars
 
-//  println(add2AndSomethingElse)
-//  println(add2AndSomethingElse <*> Option(5))
+  //  println(add2AndSomethingElse)
+  //  println(add2AndSomethingElse <*> Option(5))
 
   val customer2ID = CustomerID("Nico")
   val CustomerID(name) = customer2ID
@@ -36,10 +34,10 @@ object ApTieFighterExample extends App {
     )
 
   val twentySomethings =
-    for (user <- userBase if user.age >=20 && user.age < 30)
-      yield user.name  // i.e. add this to a list
+    for (user <- userBase if user.age >= 20 && user.age < 30)
+      yield user.name // i.e. add this to a list
 
-  twentySomethings.foreach(println)  // prints Travis Dennis
+  twentySomethings.foreach(println) // prints Travis Dennis
 
   userBase.filter(user => user.age >= 20 && user.age < 30).map(_.name).foreach(println)
 }

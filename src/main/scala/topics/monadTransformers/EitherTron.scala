@@ -6,9 +6,10 @@ import scala.util.Try
 import cats.implicits._
 
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.Future
+import scala.concurrent.{Await, Future}
+import scala.concurrent.duration.{Duration, DurationInt, FiniteDuration}
 
-class EitherTron {
+object EitherTron extends App {
 
   def parseDouble(s: String): Either[String, Double] = {
     Try(s.toDouble).map(Right(_)).getOrElse(Left(s"$s is not a number"))
@@ -29,7 +30,7 @@ class EitherTron {
   // Now time to use some futures
 
   def parseDoubleAsync(s: String): Future[Either[String, Double]] = {
-    Future.successful(parseDouble(s))
+    Future(parseDouble(s))
   }
 
   def divideAsync(a: Double, b: Double): Future[Either[String, Double]] = {
@@ -61,6 +62,8 @@ class EitherTron {
     } yield result
   }
 
+
+
   val number: EitherT[Option, String, Int] = EitherT.rightT[Option, String](5) // when using rightT or leftT need to use the type annotation
   val error: EitherT[Option, String, Int] = EitherT.leftT[Option, Int]("Not a number")
 
@@ -70,6 +73,18 @@ class EitherTron {
   val errorStringO = Some("Not a number")
   val numberE: EitherT[Option, String, Int] = EitherT.right(numberO) //again give the type annotation might be an import issue tho not sure
   val errorE: EitherT[Option, String, Int] = EitherT.left(errorStringO)
+
+  // from jrs frontend
+
+  implicit val defaultTimeout: FiniteDuration = 5.seconds
+
+  def await[A](future: Future[A])(implicit timeout: Duration): A = Await.result(future, timeout)
+
+  println(
+    await(
+      divisionProgramAsyncCats("mikey", "bob").value
+    )
+  )
 }
 
 class StarScream {

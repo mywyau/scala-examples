@@ -9,10 +9,11 @@ class Bifunctors {
   val right1: Either[String, Int] = Right(100)
   val left1: Either[String, Int] = Left("uwu")
 
-  val right2: Either[String, Int] = right1.bimap(
-    _.toUpperCase,
-    x => x * 2
-  )
+  val right2: Either[String, Int] =
+    right1.bimap(
+      _.toUpperCase,
+      x => x * 2
+    )
 
   val left2 = left1.bimap(
     _.toUpperCase,
