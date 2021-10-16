@@ -1,0 +1,5 @@
+package scalaCheck
+
+object SenpaiGenerator {
+
+}
