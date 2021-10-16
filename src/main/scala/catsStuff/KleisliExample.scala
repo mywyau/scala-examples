@@ -13,35 +13,35 @@ class KleisliExample {
 
   val function1: Int => String = (i: Int) => "hello" //arbitrary implementations
   val function2: String => Boolean = (s: String) => true
-  val function3: Boolean => Mikey = (b: Boolean) => Foodles
+  val function3: Boolean => Foodles.type = (b: Boolean) => Foodles
 
   // my goal is to 'chain' we do this through function composition
 
-  val functionComposition: Int => Mikey = function1 >>> function2 andThen function3 // >>> Cats Arrow for andThen
+  val functionComposition: Int => Foodles.type = function1 >>> function2 andThen function3 // >>> Cats Arrow for andThen
 
   val function1B: Int => Option[String] = (i: Int) => Option("hello") // A => F[B]
   val function2B: String => Option[Boolean] = (s: String) => Option(true)
-  val function3B: Boolean => Option[Mikey] = (b: Boolean) => Option(Foodles)
+  val function3B: Boolean => Option[Foodles.type] = (b: Boolean) => Option(Foodles)
 
   //  val functionCompositionB: Int => Mikey = function1B andThen function2B andThen function3B    // nice we have achieved our goal of function composition
 
   // but what happens when our fucntions have a computational context??? like A => F[B] ??
   val function1K: Kleisli[Option, Int, String] = Kleisli((_: Int) => Option("hello")) // A => F[B]   uh oh that sneaky F has foiled our plans of function composition
   val function2K: Kleisli[Option, String, Boolean] = Kleisli((_: String) => Option(true)) // we can use the Kleisli Arrow hurray
-  val function3K: Kleisli[Option, Boolean, Mikey] = Kleisli((_: Boolean) => Option(Foodles))
+  val function3K: Kleisli[Option, Boolean, Foodles.type] = Kleisli((_: Boolean) => Option(Foodles))
 
-  val functionCompositionK: Kleisli[Option, Int, Mikey] = function1K andThen function2K andThen function3K //not yet evaluated Kleisli all I have done is chain functions together
-  val composeSyntax: Kleisli[Option, Int, Mikey] = function3K compose function2K compose function1K
+  val functionCompositionK: Kleisli[Option, Int, Foodles.type] = function1K andThen function2K andThen function3K //not yet evaluated Kleisli all I have done is chain functions together
+  val composeSyntax: Kleisli[Option, Int, Foodles.type] = function3K compose function2K compose function1K
 
-  val functionCompositionArrowK: Kleisli[Option, Int, Mikey] = function1K >>> function2K >>> function3K    // arrow syntax from cats just syntax sugar really
-  val composeKArrowSyntax: Kleisli[Option, Int, Mikey] = function3K <<< function2K compose function1K
+  val functionCompositionArrowK: Kleisli[Option, Int, Foodles.type] = function1K >>> function2K >>> function3K    // arrow syntax from cats just syntax sugar really
+  val composeKArrowSyntax: Kleisli[Option, Int, Foodles.type] = function3K <<< function2K compose function1K
 
 
-  val composeAllKleislis: Option[Mikey] = // notice how I've evaluated each Kleisli and composed them together seems a little pointless in this example
+  val composeAllKleislis: Option[Foodles.type] = // notice how I've evaluated each Kleisli and composed them together seems a little pointless in this example
     for {
       v1: String <- function1K(1)
       v2: Boolean <- function2K(v1)
-      v3: Mikey <- function3K(v2)
+      v3: Foodles.type <- function3K(v2)
     } yield v3
 
 }

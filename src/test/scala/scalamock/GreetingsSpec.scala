@@ -1,5 +1,6 @@
 package scalamock
 
+import org.scalatest.matchers.must.Matchers._
 import specBase.WordSpecScalaMockBase
 
 class GreetingsSpec extends WordSpecScalaMockBase {
@@ -14,20 +15,20 @@ class GreetingsSpec extends WordSpecScalaMockBase {
 
       "return the correct message" in {
 
-        (mockFormatter.format(_:String))
+        (mockFormatter.format(_: String))
           .expects("Mr Mikey")
           .returns("Ah, Mr Bond. I've been expecting you")
           .once()
 
-//        (mockFormatter.format _)  // alternative syntax kinda
-//          .expects("Mr Mikey")
-//          .returning("Ah, Mr Mikey. I've been expecting you")
-//          .once()   // number of times expected call
+        //        (mockFormatter.format _)  // alternative syntax kinda
+        //          .expects("Mr Mikey")
+        //          .returning("Ah, Mr Mikey. I've been expecting you")
+        //          .once()   // number of times expected call
 
         //        val result = greetings.sayHello("Mr Bond", mockFormatter)  // this will kill it since we mocked it out with 'Mikey' not 'Bond'
         val result = greetings.sayHello("Mr Mikey", mockFormatter)
 
-        result shouldBe "Ah, Mr Bond. I've been expecting you"
+        result mustBe "Ah, Mr Bond. I've been expecting you"
 
       }
     }
@@ -45,7 +46,7 @@ class GreetingsSpec extends WordSpecScalaMockBase {
 
         greetings.sayHello(bond, mockFormatter)
 
-//        (mockFormatter.format _).verify(mikey).once()
+        //        (mockFormatter.format _).verify(mikey).once()
       }
     }
 
@@ -58,7 +59,7 @@ class GreetingsSpec extends WordSpecScalaMockBase {
       (brokenFormatter.format _).expects(*).throwing(new NullPointerException).anyNumberOfTimes()
 
       intercept[NullPointerException] {
-       greetings.sayHello("Erza", brokenFormatter)
+        greetings.sayHello("Erza", brokenFormatter)
       }
     }
 
@@ -69,7 +70,7 @@ class GreetingsSpec extends WordSpecScalaMockBase {
       (australianFormat.format _).expects(*).onCall { s: String => s"G'day $s" }
 
       greetings.sayHello("Wendy", australianFormat)
-//      greetings.sayHello("Gray", australianFormat)
+      //      greetings.sayHello("Gray", australianFormat)
     }
   }
 

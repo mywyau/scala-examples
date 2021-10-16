@@ -44,10 +44,4 @@ object MonthBased {
   val notNovemberMonths: Seq[DecemberOnwards] = allValues.collect {
     case month: DecemberOnwards => month
   }
-
-  def onwardsValues[T]()(implicit tag: ClassTag[T]): Seq[T] = {
-    notNovemberMonths.collect[T, Seq[T]] {
-      case month: T => month
-    }
-  }
 }
