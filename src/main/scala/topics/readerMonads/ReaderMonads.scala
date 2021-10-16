@@ -2,7 +2,6 @@ package topics.readerMonads
 
 import cats.Id
 import cats.data.{Kleisli, Reader}
-import topics.readerMonads.ReaderMonads.executeService
 
 
 object ReaderMonads {
@@ -66,15 +65,16 @@ object ReaderMonads {
     courseManager: CourseManager => courseManager.authService.isAuthorised(courseManager.userName) // notice we have rewritten the above isAuthorised method into a function contained within the Reader Monad
   }
 
-  def register(isFull: Boolean) = Reader[CourseManager, String] {
-    courseManager: CourseManager =>
-      courseManager.courseService
-        .register(
-          courseManager.course,
-          isFull,
-          courseManager.userName
-        )
-  }
+  def register(isFull: Boolean) =
+    Reader[CourseManager, String] {
+      courseManager: CourseManager =>
+        courseManager.courseService
+          .register(
+            courseManager.course,
+            isFull,
+            courseManager.userName
+          )
+    }
 
   def isAuthorisedK: Reader[CourseManager, Boolean] = Kleisli[Id, CourseManager, Boolean] {
     courseManager: CourseManager => courseManager.authService.isAuthorised(courseManager.userName) // notice we have rewritten the above isAuthorised method into a function contained within the Reader Monad
