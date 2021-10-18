@@ -11,7 +11,7 @@
         <parameter value="-Ypartial-unification" />
       </parameters>
     </profile>
-    <profile name="sbt 2" modules="scala-examples,scala-notes-and-examples.scala-examples,self_projects.scala-notes-and-examples">
+    <profile name="sbt 2" modules="scala-examples,scala-notes-and-examples.scala-examples">
       <option name="higherKinds" value="true" />
       <parameters>
         <parameter value="-Ypartial-unification" />
@@ -19,6 +19,12 @@
       </parameters>
       <plugins>
         <plugin path="$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/kind-projector_2.12.10/0.11.3/kind-projector_2.12.10-0.11.3.jar" />
+      </plugins>
+    </profile>
+    <profile name="sbt 3" modules="self_projects.scala-notes-and-examples">
+      <option name="higherKinds" value="true" />
+      <plugins>
+        <plugin path="$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/kind-projector_2.13.3/0.11.3/kind-projector_2.13.3-0.11.3.jar" />
       </plugins>
     </profile>
   </component>

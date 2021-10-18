@@ -1,4 +1,4 @@
-package rockTheJVM.`abstract`
+package rockTheJVM.abstractMath
 
 object Semigroups {
 
