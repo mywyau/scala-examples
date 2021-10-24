@@ -68,9 +68,7 @@ object Functors {
     // the return type of the type signature is the way it is because we need Functor[Tree] NOT Functor[Branch] or Functor[Leaf]
   }
 
-
   //
-
 
   implicit object TreeFunctor extends Functor[Tree] {
 
