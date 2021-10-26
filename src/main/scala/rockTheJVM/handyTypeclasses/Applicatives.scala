@@ -57,7 +57,7 @@ object Applicatives {
     answer
   }
 
-  def productWithApplicativesMikey[W[_], A, B](wa: W[A], wb: W[B])(implicit applicative: Applicative[W]): W[(A, B)] = {
+  def productWithApplicatives[W[_], A, B](wa: W[A], wb: W[B])(implicit applicative: Applicative[W]): W[(A, B)] = {
     // video answer
     val functionWrapper: W[B => (A, B)] = applicative.map(wa)(a => (b: B) => (a, b))
     //    apMikey(functionWrapper)(wb)
