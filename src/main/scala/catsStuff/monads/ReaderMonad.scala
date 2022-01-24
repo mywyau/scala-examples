@@ -3,7 +3,7 @@ package catsStuff.monads
 import cats.data.Reader
 import cats.{Applicative, Id, _}
 
-case class Cat(name: String, favourtiteFood: String)
+case class Cat(name: String, favouriteFood: String)
 
 class ReaderMonad {
 
@@ -12,7 +12,7 @@ class ReaderMonad {
 
   val catReader: Reader[Cat, String] = Reader(cat => cat.name) //Create a Reader of Cats, by defining it's type and using it's apply to construct it for our Cat case class
 
-  val catName: Id[String] = catReader.run(Cat(name = "Myau", favourtiteFood = "Pineapple Pizza"))
+  val catName: Id[String] = catReader.run(Cat(name = "Myau", favouriteFood = "Pineapple Pizza"))
   // res0: cats.Id[String] = Myau
 
   // So far so simple, but what advantage do Readers give us over the raw functions?
@@ -26,7 +26,7 @@ class ReaderMonad {
 
   val sayHello = greetKitty.run(Cat("Heathcliff", "junk food"))
 
-  val feedKitty: Reader[Cat, String] = Reader(cat => s"have a nice bowl of ${cat.favourtiteFood}")
+  val feedKitty: Reader[Cat, String] = Reader(cat => s"have a nice bowl of ${cat.favouriteFood}")
 
   val greetAndFeed: Reader[Cat, String] =
     for {

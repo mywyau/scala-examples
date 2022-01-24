@@ -1,11 +1,17 @@
 package rockTheJVM.handyTypeclasses
 
+import cats.{Foldable, Traverse}
+import topics.functors.Functor
+
 import java.util.concurrent.Executors
 import scala.concurrent.{ExecutionContext, Future}
 
 object Traversing {
 
   // Higher level approach to iteration - but dont think about iteration
+
+  // So when designing abstract functions you should design them to work with the weakest typeclass in mind
+  // not the most restrictive obviously if it makes sense to do so - rule of thumb
 
   implicit val ec = ExecutionContext.fromExecutorService(Executors.newFixedThreadPool(8))
 
@@ -98,11 +104,73 @@ object Traversing {
     listTraverse(list)(identity)
   }
 
-  listSequence(List(Vector(1, 2), Vector(3, 4))) // Vector[List(1,2,3,4)]
+  val allPairs = listSequence(List(Vector(1, 2), Vector(3, 4))) // Vector(List( (1,3), (1,4), (2,3), (2,4) )
+  val threeTuples = listSequence(List(Vector(1, 2), Vector(3, 4), Vector(5, 6))) // all the possible truples
 
+  def filterAsOption(list: List[Int])(predicate: Int => Boolean): Option[List[Int]] = {
+    // this will check all meet the predicate t return all elements as a List otherwise return None if not all satisfy
+    listTraverse[Option, Int, Int](list)(n => Some(n).filter(predicate))
+  }
+
+  val isEven: Int => Boolean = _ % 2 == 0
+  val allTrue = filterAsOption(List(2, 4, 6))(isEven) // Some(List(2,4,6))
+  val someFalse = filterAsOption(List(1, 2, 3))(isEven) // None
+
+  import cats.data.Validated
+  import cats.instances.list._ // Semigroup[List] => Applicative[ErrorsOr]
+
+  type ErrorsOr[T] = Validated[List[String], T]
+
+  def filterAsValidated(list: List[Int])(predicate: Int => Boolean): ErrorsOr[List[Int]] = {
+    listTraverse[ErrorsOr, Int, Int](list) { n =>
+      if (predicate(n)) Validated.valid(n)
+      else Validated.invalid(List(s"predicate for $n failed"))
+    }
+  }
+
+  val allTrueValidated = filterAsValidated(List(2, 4, 6))(isEven) // Valid(List(2,4,6))
+  val someFalseValidated = filterAsValidated(List(1, 2, 3))(isEven) // Invalid(List("predicate for 1 failed", "predicate for 3 failed"))
+
+  trait MyTraverse[L[_]] extends Foldable[L] with Functor[L] {
+
+    def traverse[F[_] : Applicative, A, B](container: L[A])(func: A => F[B]): F[L[B]]
+
+    def sequence[F[_] : Applicative, A, B](container: L[F[A]]): F[L[A]] =
+      traverse(container)(identity)
+
+    type Identity[T] = T
+
+    def mapExercise[A, B](wa: L[A])(f: A => B): L[B] = {
+      traverse[Identity, A, B](wa)(f)
+    }
+
+    import cats.Id // same as Identity[T]
+
+    def mapCats[A, B](wa: L[A])(f: A => B): L[B] = {
+      traverse[Id, A, B](wa)(f)
+    }
+
+    // because we can implement Map from traverse, the typeclass Traverse naturally is a Functor
+
+  }
+
+  import cats.instances.future._
+
+  val allBandwidthsCats: Future[List[Int]] = Traverse[List].traverse(servers)(getBandwidth)
+
+  import cats.syntax.traverse._ //sequence + traverse
+
+  val allBandwidthsCats2: Future[List[Int]] = servers.traverse(getBandwidth)
 
   def main(args: Array[String]): Unit = {
 
+    println(allPairs)
+    println(threeTuples) // the behaviors are wackier depending on the elements
 
+    println(allTrue)
+    println(someFalse)
+
+    println(allTrueValidated)
+    println(someFalseValidated)
   }
 }

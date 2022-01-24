@@ -1,0 +1,5 @@
+limactl start $HOME/lima_machines/docker.yaml --tty=false
+
+export DOCKER_HOST="unix://$HOME/.lima/docker.sock"
+
+docker run -d -p 27017-27019:27017-27019 --name mongodb mongo:3.6.18

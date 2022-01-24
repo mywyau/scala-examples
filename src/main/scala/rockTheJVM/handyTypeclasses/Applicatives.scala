@@ -44,7 +44,7 @@ object Applicatives {
 
   val validatedApplicative = Applicative[ErrorsOr]
 
-  //TODO : thought experiement
+  //TODO : thought experiment
 
   def apMikey[W[_], A, B](wf: W[A => B])(wa: W[A]): W[B] = ??? // already implemented but was needed for the exercise
 
