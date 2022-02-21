@@ -1,0 +1,11 @@
+kibana timepicker functionality
+
+boolean queries
+-- and booelan operator
+http.response.status_code : * and http.response.status_code >= 400
+-- parenthesis are prioritised first then filtered afterwards that satisfy both, not == !
+(http.response.status_code : * and http.response.status_code >= 400) and (not http.response.status_code: 408)
+-- () > and > or
+
+
+

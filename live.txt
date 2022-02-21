@@ -1,0 +1,31 @@
+Live Support Update ------- Today 9:00 - 17:00
+
+************* PROD *************
+
+Authorize: 1047K, Authentication: 804K - 804K/1047K = 77%
+
+6x /login/signin/creds
+1x /multi-factor/start/<GUID>
+1x /multi-factor/request-new-code/<GUID>
+
+
++++ Other Errors +++
+
+login
+6x    BadRequest returned
+1x    The http server closed the connection unexpectedly before delivering responses for 1 outstanding
+transaction-monitoring-proxy
+63x  Exception using circuit breaker, failed because of java.net.ConnectException: Connection refused
+profile-frontend
+1x    InvalidSessionError
+multi-factor
+1x   Error: The http server closed the connection unexpectedly
+
+************** ETE *****************
+
+login
+1x  The http server closed the connection unexpectedly
+transaction-monitoring-proxy
+2x  Unexpected response received: 502 Bad Gateway
+account
+1x  Exception thrown: The connection closed with error (edited)

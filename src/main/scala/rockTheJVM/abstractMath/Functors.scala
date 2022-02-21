@@ -5,8 +5,8 @@ import scala.util.Try
 object Functors {
 
   val aModifiedList = List(1, 2, 3).map(_ + 1) //List(2,3,4)
-  val aModifiedOption = Option(2).map(_ + 1) //Some(3)
-  val aModifiedTry = Try(42).map(_ + 1) //Success(43)
+  val aModifiedOption = Option(2).map(_ + 1) //Some(3)  // None
+  val aModifiedTry = Try(42).map(_ + 1) //Success(43) // Failure
 
   trait myFunctor[F[_]] {
 
