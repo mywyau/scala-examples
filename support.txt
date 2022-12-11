@@ -1,0 +1,26 @@
+Live Support Update ------- 12/09/2022 09:00 - 12/09/2022 17:00
+************* PROD *************
+Authorize: 937K, Authentication: 738K - 738K/937K = 78.76%
+
+7x   /login/signin/creds
+1x   /multi-factor/validate/ayp/tbf/ffddc6bb-6909-4f6c-94fc-51f34529797e
+
+
+
++++ M-svc errors: +++
+help-frontend
+2x   action: Play handle server error, details: Unhandled exception: Index 1 out of bounds for length 1
+
+transaction-monitoring-proxy
+1x action: TXM Service - Write Audit, details: Unexpected response received: 502 Bad Gateway for https://txm.external/datastream/write/audit
+
+api-frontend
+1x action: token, details: status code: 500 - Unexpected server error
+
+email-proxy
+2x action: Response returned, details: 500 - SNS Notification
+
+************** ETE *****************
+
+authorize-frontend
+1x   action: createPendingSigninSession, details: Failed due to: The http server closed the connection unexpectedly before delivering responses for 1 outstanding requests

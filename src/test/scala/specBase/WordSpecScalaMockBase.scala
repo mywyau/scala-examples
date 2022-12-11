@@ -1,10 +1,9 @@
 package specBase
 
 import org.scalamock.scalatest.MockFactory
-import org.scalatest.wordspec.AnyWordSpec
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.wordspec.AnyWordSpecLike
 
-trait WordSpecScalaMockBase extends AnyWordSpec with Matchers with MockFactory {
+trait WordSpecScalaMockBase extends AnyWordSpecLike with MockFactory {
 
   /*
     Stuff you want other tests can have go here

@@ -48,7 +48,7 @@ rows  0    1                        | 1
     Write a function that computes the elements of Pascal’s triangle by means of a recursive process.
     Do this exercise by implementing the pascal function in Main.scala, which takes a column c and a row r,
     counting from 0 and returns the number at that spot in the triangle.
-    For example, pascal(0,2) =1, pascal(1,2) =2 and pascal(1,3) =3.
+    For example, pascal(0,2) = 1, pascal(1,2) =2 and pascal(1,3) =3.
   */
 
 //   this version will return a stack overflow exception not tail recursive

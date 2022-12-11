@@ -45,11 +45,11 @@ object MapNSyntax {
   // traverse example of mapN, to handle a List of inputs to then
 }
 
-object SyntaxRunner extends App {
-
-  println(MapNSyntax.notFunSyntax + " this is the sweaty syntax\n")
-  println(MapNSyntax.easyModeSyntax + " this is easy mode mapN syntax\n")
-
-  println(MapNSyntax.mapNSikeMike + " this is another example of mapN syntax\n")
-
-}
+//object SyntaxRunner extends App {
+//
+//  println(MapNSyntax.notFunSyntax + " this is the sweaty syntax\n")
+//  println(MapNSyntax.easyModeSyntax + " this is easy mode mapN syntax\n")
+//
+//  println(MapNSyntax.mapNSikeMike + " this is another example of mapN syntax\n")
+//
+//}

@@ -63,6 +63,23 @@ bzip largerarchive.tar        burrows wheeler compression algo
 unzip someZipFile.zip           unzips .zip files
 
 
+functions
+
+restartBAVFE(){
+  sm --stop $1
+  sleep 5
+  sm --start BANK_ACCOUNT_VERIFICATION_FRONTEND -r --appendArgs '{
+    "BANK_ACCOUNT_VERIFICATION_FRONTEND": [
+      "-J-Dmicroservice.services.access-control.enabled=true",
+      "-J-Dmicroservice.services.access-control.allow-list.0=coronavirus-job-support-frontend",
+      "-J-Dmicroservice.services.access-control.allow-list.1=coronavirus-jss-helpdesk-frontend",
+      "-J-Dmicroservice.services.access-control.allow-list.2=coronavirus-jrs-helpdesk-frontend",
+      "-J-Dmicroservice.services.access-control.allow-list.3=coronavirus-job-retention-scheme-frontend"
+    ]
+  }'
+}
+
+restartBAVFE BANK_ACCOUNT_VERIFICATION_FRONTEND
 
 
 

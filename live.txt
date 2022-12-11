@@ -1,0 +1,42 @@
+TC Evening Weather Report :sunny:
+++++++++    Summary      ++++++++
+Fairly Quiet day for TC services today.
+Slack Channels:
+Traffic Levels:
+IRV(Tax-history)    - Low traffic levels
+SA Pre-pop          - Normal traffic levels
+IRR                 - Normal traffic levels
+NINO API            - Normal traffic levels
+Passengers          - Normal traffic levels
+ATaR                - Normal traffic levels
+Charities           - Normal traffic levels
+CIS                 - Normal traffic levels
+PBIK                - Normal traffic levels
+
+Downstreams:
+  No issues
+--------------------    Failure rates  --------------------------
+tax-history
+404     36.95%      1229
+pbik-frontend
+401     9.84%         30
+national-insurance
+404s    65.86%    21,668
+401s    9.97%       3281
+individual-tax
+404     50.98%    16,133
+401     10.34%      3271
+individual-income
+404      43.73%    13454
+401      10.53%     3241
+individual-employment
+404      50.90%     9155
+401      6.38%      1147
+individual-benefits
+404      60.71%    20017
+401      10.58%     3487
+home-office-immigration-status-proxy
+404      17.69%      161
+------------------------------------------------------------------
+Shuttering:
+Recommendations:

@@ -15,7 +15,7 @@ class AccountMethods {
       case User(id, "Senpai") if id <= 9000 => "Dreamy Senpai..."
       case User(id, _) if id > 9000 => "It's over 9000!!"
       case Admin(id, _) if id <= 100 => "Run it's a manager!!"
-      case _ => "Mikey ya Fuckin' Weeb"
+      case _ => "Mikey ya Weeb"
     }
   }
 
