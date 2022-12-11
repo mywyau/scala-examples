@@ -12,7 +12,7 @@ object WeakerMonads {
 
     def flatMap[A, B](ma: M[A])(f: A => M[B]): M[B]
 
-    //hint: Apply extends Functor
+    //    hint: Apply extends Functor
     //    def ap[A, B](wf: M[A => B])(wa: M[A]): M[B] = {
     //      // My solution
     //
@@ -20,7 +20,7 @@ object WeakerMonads {
     //    }
 
     def ap[A, B](wf: M[A => B])(wa: M[A]): M[B] = {
-      // answer
+      //       answer
 
       flatMap(wa)(a => map(wf)(f => f(a)))
       // M[A] A => M[A=>B] A=>B  B    -- which overall gets flatMapped into M[B] for the return type
@@ -30,9 +30,15 @@ object WeakerMonads {
   import cats.syntax.flatMap._
   import cats.syntax.functor._ // .map extension method  // lets you perform for comprehensions
 
-
   // notice it is similar to Monad context bound version but this time with a Weaker Monad version
   def getPairs[M[_] : FlatMap, A, B](ma: M[A], mb: M[B]): M[(A, B)] =
+    for {
+      n <- ma
+      c <- mb
+    } yield (n, c)
+
+
+  def getPairsIntString(ma: Seq[Int], mb: Seq[String]): Seq[(Int, String)] =
     for {
       n <- ma
       c <- mb
@@ -54,6 +60,49 @@ object WeakerMonads {
 
 
   def main(args: Array[String]): Unit = {
+
+    val nums = Seq(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+
+    val letters = Seq(
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+      "f",
+      "g",
+      "h",
+      "i",
+      "j"
+    )
+
+    def sum(n: Int): Int = {
+
+      def loop(acc: Int, start: Int): Int = {
+        if (start == n) {
+          Thread.sleep(500)
+          println(s"$acc + $start = ${acc + start}")
+          acc + start
+        } else {
+          Thread.sleep(500)
+          println(s"$acc + $start = ${acc + start}")
+          loop(acc + start, start + 1)
+        }
+      }
+
+      loop(0, 1)
+    }
+
+
+    // 1 x 2 x 3 x 4 x 5 = 120  ?
+
+    // 1 + 2 + 3 + 4 + 5 = 15  ?
+    // 1 + 2 + 3 + 4 + 5 + ... 100 = 5050x
+    // 1 + 2 + 3 + 4 + 5 + ... 100 =
+
+    println(sum(20))
+
+    //    getPairsIntString(nums, letters).foreach(println)
 
   }
 }

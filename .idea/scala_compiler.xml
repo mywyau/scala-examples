@@ -4,6 +4,7 @@
     <option name="postfixOps" value="true" />
     <option name="higherKinds" value="true" />
     <option name="existentials" value="true" />
+    <option name="explainTypeErrors" value="true" />
     <profile name="sbt 1" modules="scala-exmaples">
       <option name="higherKinds" value="true" />
       <parameters>
@@ -24,7 +25,7 @@
     <profile name="sbt 3" modules="self_projects.scala-notes-and-examples">
       <option name="higherKinds" value="true" />
       <plugins>
-        <plugin path="$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/kind-projector_2.13.3/0.11.3/kind-projector_2.13.3-0.11.3.jar" />
+        <plugin path="$USER_HOME$/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/kind-projector_2.13.3/0.13.2/kind-projector_2.13.3-0.13.2.jar" />
       </plugins>
     </profile>
   </component>

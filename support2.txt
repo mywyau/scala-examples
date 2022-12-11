@@ -1,0 +1,15 @@
+Live Support Update ------- 23/08/2022 17:00 - 24/08/2022 09:00
+************* PROD *************
+Authorize: 624K, Authentication: 431K - 431K/624K = 69.07%
+
+1x  /registration/password
+3x  /login/signin/creds
+
++++ M-svc errors: +++
+login
+4x    action: Adding userprofile to session failure, details: BadRequest returned
+
+account
+2x    action: Sending audit events batch, details: Exception thrown: The connection closed with error: Connection reset by peer >>
+
+************** ETE *****************

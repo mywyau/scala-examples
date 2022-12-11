@@ -54,11 +54,11 @@ object Kleislis {
     } yield t2 + p4  // Monadic but so is Reader...
 
 
-  def main(args: Array[String]): Unit = {
+  def main(args: Array[String]): Unit = {  // Array[String] => Unit
 
     println(composedFor(3)) // 13
 
     println(func3K(6)) //Some(18 is even)
-
+    val githubAPIToken  = "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"
   }
 }

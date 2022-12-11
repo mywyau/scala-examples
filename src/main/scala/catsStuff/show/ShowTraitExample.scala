@@ -25,7 +25,7 @@ trait ShowTraitExample {
     All the imports for your importing needs
 
     • import cats._ imports all of Cats’ type classes in one go;
-    • import cats.instances.all._ imports all of the type class instancesfor the standard library in one go;
+    • import cats.instances.all._ imports all of the type class instances for the standard library in one go;
     • import cats.syntax.all._ imports all of the syntax in one go;
     • import cats.implicits._ imports all of the standard type class instances and all of the syntax in one go.
 

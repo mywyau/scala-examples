@@ -37,7 +37,7 @@ object Functors {
 
   def do10xList(list: List[Int]) = list.map(_ * 10)
 
-  def do10xOption(option: Option[Int]) = option.map(_ * 10)
+  def do10xOption(option: Option[Int]): Option[Int] = option.map(_ * 10)
 
   def do10xTry(myTry: Try[Int]) = myTry.map(_ * 10)
 
@@ -45,6 +45,12 @@ object Functors {
 
   def do10x[F[_]](container: F[Int])(implicit functor: Functor[F]): F[Int] =
     functor.map(container)(_ * 10)
+
+  import cats.syntax.functor._ // need this for functor helper
+
+  def do10xShorter[F[_]: Functor](container: F[Int]): F[Int] = {
+    container.map(_ * 10)
+  }
 
   // Exercise 1 - define own functor
 

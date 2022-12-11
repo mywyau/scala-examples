@@ -8,7 +8,7 @@ object MonadTransformers {
 
   // Convenience API
 
-  //helps you apply map and flatMap without unwarpping and re wrapping up etc.
+  //helps you apply map and flatMap without unwrapping and re wrapping up etc.
   def sumAllOptions(values: List[Option[Int]]): Int = ???
 
   import cats.data.OptionT

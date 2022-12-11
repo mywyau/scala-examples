@@ -36,11 +36,11 @@ object Semigroupals {
   //TODO: implement product with monads
 
   import cats.Monad
-  import cats.syntax.functor._
   import cats.syntax.flatMap._
+  import cats.syntax.functor._
 
   def productWithMonads[F[_], A, B](fa: F[A], fb: F[B])(implicit monad: Monad[F]): F[(A, B)] = {
-  // we are able to implement semigroupal in terms of monad's functions
+    // we are able to implement semigroupal in terms of monad's functions
     // hence Monad extends Semigroupal
     monad.flatMap(fa)(a => monad.map(fb)(b => (a, b)))
   }
@@ -67,10 +67,11 @@ object Semigroupals {
 
   val validatedSemigroupal = Semigroupal[ErrorsOr] //requires the implicit Semigroup[List[_]]
 
-  val invalidsCombination = validatedSemigroupal.product(
-    Validated.invalid(List("Something wrong", "something else wrong")),
-    Validated.invalid(List("This can't be right"))
-  )
+  val invalidsCombination =
+    validatedSemigroupal.product(
+      Validated.invalid(List("Something wrong", "something else wrong")),
+      Validated.invalid(List("This can't be right"))
+    )
 
   type EitherErrorsOr[T] = Either[List[String], T]
 

@@ -83,16 +83,16 @@ object Monoids {
 
     // Part 1
 
-    println(sumLeft)
-    println(sumRight)
+    //    println(sumLeft)
+    //    println(sumRight)
 
-    println(s"using the new generic .combineFold() we created on Ints: ${combineFold(numbers)}")
-    println(s"using the new generic .combineFold() we created on Strings: ${combineFold(strings)}")
+    //    println(s"using the new generic .combineFold() we created on Ints: ${combineFold(numbers)}")
+    //    println(s"using the new generic .combineFold() we created on Strings: ${combineFold(strings)}")
 
 
     // Part 2 combining Maps[String, Int] answer from video
     val massivePhonebook = combineFold(phonebook)
-    println(s"using the new generic .combineFold() we created on Map[String, Int]: ${massivePhonebook}")
+    //    println(s"using the new generic .combineFold() we created on Map[String, Int]: ${massivePhonebook}")
 
 
     // Part 3
