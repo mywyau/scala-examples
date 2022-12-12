@@ -17,11 +17,12 @@ lazy val root = (project in file("."))
     libraryDependencies ++= Seq(
       "org.scala-lang.modules" %% "scala-parser-combinators" % "2.1.1",
       "org.scalactic" %% "scalactic" % "3.2.14",
-      "org.scalatest" %% "scalatest" % "3.2.14" % "test",
       "org.typelevel" %% "cats-core" % "2.9.0",
-      "org.scalamock" %% "scalamock" % "5.2.0" % "test",
-      "org.scalatest" %% "scalatest" % "3.2.14" % "test",
-      "org.scalacheck" %% "scalacheck" % "1.17.0" % "test" //property testing
+      "org.scalatest" %% "scalatest" % "3.2.14" % Test,
+      "com.disneystreaming" %% "weaver-cats" % "0.8.1" % Test,
+      "org.scalamock" %% "scalamock" % "5.2.0" % Test,
+      "org.scalatest" %% "scalatest" % "3.2.14" % Test,
+      "org.scalacheck" %% "scalacheck" % "1.17.0" % Test //property testing
     ),
     scalacOptions ++=
       Seq("-language:higherKinds"),
