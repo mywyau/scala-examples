@@ -19,7 +19,7 @@ lazy val root = (project in file("."))
       "org.scalactic" %% "scalactic" % "3.2.14",
       "org.typelevel" %% "cats-core" % "2.9.0",
       "org.scalatest" %% "scalatest" % "3.2.14" % Test,
-      "com.disneystreaming" %% "weaver-cats" % "0.8.1" % Test,
+      "com.disneystreaming" %% "weaver-cats" % "0.8.1" % Test,  //disney streaming
       "org.scalamock" %% "scalamock" % "5.2.0" % Test,
       "org.scalatest" %% "scalatest" % "3.2.14" % Test,
       "org.scalacheck" %% "scalacheck" % "1.17.0" % Test //property testing

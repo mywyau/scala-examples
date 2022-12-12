@@ -1,4 +1,5 @@
-project/target/
-target/
-.idea/
+project/project
+project/target
+target
+/.idea
 
