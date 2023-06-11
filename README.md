@@ -1,6 +1,8 @@
 # scala-examples
 
  A personal playground for general stuff, it's hella messy :/
+ 
+ Gonna split this up it's getting out of hand.
 
 
 so to run use 
