@@ -18,13 +18,13 @@ class Polymorph {
   def returnGenericApplyDiscount[A](discount: A): Option[A] = {
     discount match {
       case d: String =>
-        s"Lookup percentage discount in database for: $d"
+        println(s"Lookup percentage discount in database for: $d")
         Option[A](discount)
       case d: Int =>
-        s"$d discount will be applied"
+        println(s"$d discount will be applied")
         Option[A](discount)
       case _ =>
-        "Unsupported discount type"
+        println("Unsupported discount type")
         Option[A](discount)
     }
   }
