@@ -140,7 +140,7 @@ object DataValidation {
     def passwordCheck(password: String): FormValidationSolution[String] =
       Validated.cond(password.length >= 10, password, List(s"Password must be at least 10"))
 
-    def validateFormAnswer(form: Map[String, String]) =
+    def validateFormAnswer(form: Map[String, String]): Validated[List[String], String] =
       getValue(form, "Name").andThen(name => nonBlank(name, "Blank"))
         .combine(getValue(form, "Email").andThen(emailProperForm))
         .combine(getValue(form, "Password").andThen(passwordCheck))

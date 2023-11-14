@@ -1,7 +1,5 @@
 package scala.coursera.week1
 
-import scala.annotation.tailrec
-
 class CountingChange {
 
   val coins = List(5, 10, 20, 50, 100, 200, 500)
@@ -36,8 +34,7 @@ class CountingChange {
         case _ => coinHelper(coins.tail, amount) + coinHelper(coins, amount - coins.head)
       }
     }
+
     coinHelper(coins, money)
   }
-
-
 }
