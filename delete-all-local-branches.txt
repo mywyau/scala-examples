@@ -1,0 +1,4 @@
+removes all except branches named: "develop", "master" or "main"
+
+
+git branch | grep -v "develop" | grep -v "master" | grep -v "master" | xargs git branch -D
