@@ -1,4 +1,4 @@
-package catsnotes.liefBattermann
+package catsnotes.validationByLiefBattermann
 
 import cats.implicits._
 
