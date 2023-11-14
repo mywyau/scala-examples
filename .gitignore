@@ -7,5 +7,4 @@ target
 .bloop
 .metals/
 project/project/
-.metals/metals.lock.dbproject/.bloop
 project/metals.sbt
