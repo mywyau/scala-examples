@@ -1,42 +1,46 @@
-TC Evening Weather Report :sunny:
+TC Evening Weather Report
 ++++++++    Summary      ++++++++
-Fairly Quiet day for TC services today.
+Notes:  Pretty quiet, there was an auth blip for trusts but none for Custodians
 Slack Channels:
-Traffic Levels:
-IRV(Tax-history)    - Low traffic levels
-SA Pre-pop          - Normal traffic levels
+Traffic Levels: Generally pretty normal, no abnormal ranges or spikes, comparable to the recent days
+
+CIS/HOSS            - Normal traffic levels
 IRR                 - Normal traffic levels
 NINO API            - Normal traffic levels
 Passengers          - Normal traffic levels
 ATaR                - Normal traffic levels
 Charities           - Normal traffic levels
-CIS                 - Normal traffic levels
+IRV(Tax-history)    - Normal traffic levels
 PBIK                - Normal traffic levels
+SA Pre-pop          - Normal traffic levels
 
-Downstreams:
-  No issues
 --------------------    Failure rates  --------------------------
 tax-history
-404     36.95%      1229
+404     40.85%       10340
+tax-history-frontend
+404     0.69%          85
 pbik-frontend
-401     9.84%         30
-national-insurance
-404s    65.86%    21,668
-401s    9.97%       3281
-individual-tax
-404     50.98%    16,133
-401     10.34%      3271
+401     2.96%          5
+charities-registration-frontend
+401     1.20%          77
 individual-income
-404      43.73%    13454
-401      10.53%     3241
-individual-employment
-404      50.90%     9155
-401      6.38%      1147
+404      50.77%      15342
+401       9.89%       2989
 individual-benefits
-404      60.71%    20017
-401      10.58%     3487
+404      62.72%      20287
+401       9.87%       3191
+national-insurance
+404s    69.45%       22014
+401s     9.60%        3044
+individual-tax
+404      50.73%      15173
+401       9.93%       2917
+individual-employment
+404      57.90%       12322
+401       4.96%        1054
+
 home-office-immigration-status-proxy
-404      17.69%      161
+404       9.82%        273
 ------------------------------------------------------------------
-Shuttering:
-Recommendations:
+Shuttering: None
+Recommendations: None

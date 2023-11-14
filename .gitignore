@@ -1,9 +1,11 @@
-project/target/
-target/
-.idea/
+project/project
+project/target
+target
+/.idea
+
 
 .bloop
 .metals/
 project/project/
-project/.bloop
+.metals/metals.lock.dbproject/.bloop
 project/metals.sbt

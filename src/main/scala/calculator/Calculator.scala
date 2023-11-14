@@ -2,6 +2,9 @@ package calculator
 
 object Calculator extends App {
 
+
+
+
   def cube(x: Int): Int = {
     //  Integer
     x * x * x
