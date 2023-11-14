@@ -1,11 +1,13 @@
 # scala-examples
 
- A personal playground for general stuff
+ A personal playground for general stuff, books and notes.
 
+---
 
-so to run use 
+## To run any of the programs
 
-# sbt run 
+```
+sbt run
+```
 
-* it will then ask for a number which corresponds to the main class detected you wish to run bit of a pain
-* 
+* it will then ask for a number which corresponds to the main class you would like to run which was picked up by sbt
