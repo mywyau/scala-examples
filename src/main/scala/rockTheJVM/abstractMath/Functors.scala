@@ -23,6 +23,7 @@ object Functors {
   import cats.instances.option._
 
   val optionFunctor = Functor[Option]
+
   val incrementedOption = optionFunctor.map(Option(2))(_ + 1)
 
   import cats.instances.try_._

@@ -18,6 +18,7 @@ lazy val root = (project in file("."))
       "org.scala-lang.modules" %% "scala-parser-combinators" % "2.1.1",
       "org.scalactic" %% "scalactic" % "3.2.14",
       "org.typelevel" %% "cats-core" % "2.9.0",
+      "org.typelevel" %% "cats-effect" % "3.2.0",
       "com.disneystreaming" %% "weaver-cats" % "0.8.1" % Test, //disney streaming
       "com.disneystreaming" %% "weaver-scalacheck" % "0.8.1" % Test,
       "org.scalamock" %% "scalamock" % "5.2.0" % Test,

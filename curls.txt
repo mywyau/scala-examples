@@ -1,0 +1,3 @@
+curl -X DELETE https://agents-external-stubs.protected.mdtp/agent-fi-relationship/test-only/relationships/agent/NARN7375722/service/PERSONAL-INCOME-RECORD/client/AM242413B
+
+curl -v -H 'Authorization: Bearer 0e1e225e-1a95-4149-a0c3-5fc10631e84d' https://agents-external-stubs.protected.mdtp/agent-fi-relationship/relationships/service/PERSONAL-INCOME-RECORD/clientId/AM242413B

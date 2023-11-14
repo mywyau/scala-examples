@@ -1,0 +1,153 @@
+2023.09.06 17:06:26 INFO  Started: Metals version 1.0.1 in folders '/Users/michaelyau/self_projects/scala-notes-and-examples' for client Visual Studio Code 1.81.1.
+Sep 06, 2023 5:06:26 PM org.flywaydb.core.internal.license.VersionPrinter printVersionOnly
+INFO: Flyway Community Edition 9.21.2 by Redgate
+Sep 06, 2023 5:06:26 PM org.flywaydb.core.internal.license.VersionPrinter printVersion
+INFO: See release notes here: https://rd.gt/416ObMi
+Sep 06, 2023 5:06:26 PM org.flywaydb.core.internal.license.VersionPrinter printVersion
+INFO: 
+Sep 06, 2023 5:06:27 PM org.flywaydb.core.FlywayExecutor execute
+INFO: Database: jdbc:h2:file:/Users/michaelyau/self_projects/scala-notes-and-examples/.metals/metals (H2 2.1)
+Sep 06, 2023 5:06:27 PM org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory allAppliedMigrations
+INFO: Schema history table "PUBLIC"."flyway_schema_history" does not exist yet
+Sep 06, 2023 5:06:27 PM org.flywaydb.core.internal.command.DbValidate validate
+INFO: Successfully validated 4 migrations (execution time 00:00.024s)
+Sep 06, 2023 5:06:27 PM org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory create
+INFO: Creating Schema History table "PUBLIC"."flyway_schema_history" ...
+Sep 06, 2023 5:06:27 PM org.flywaydb.core.internal.command.DbMigrate migrateGroup
+INFO: Current version of schema "PUBLIC": << Empty Schema >>
+Sep 06, 2023 5:06:27 PM org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+INFO: Migrating schema "PUBLIC" to version "1 - Create tables"
+Sep 06, 2023 5:06:27 PM org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+INFO: Migrating schema "PUBLIC" to version "2 - Server discovery"
+Sep 06, 2023 5:06:27 PM org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+INFO: Migrating schema "PUBLIC" to version "3 - Jar symbols"
+Sep 06, 2023 5:06:27 PM org.flywaydb.core.internal.command.DbMigrate doMigrateGroup
+INFO: Migrating schema "PUBLIC" to version "4 - Fingerprints"
+Sep 06, 2023 5:06:27 PM org.flywaydb.core.internal.command.DbMigrate logSummary
+INFO: Successfully applied 4 migrations to schema "PUBLIC", now at version v4 (execution time 00:00.035s)
+2023.09.06 17:06:27 INFO  time: initialize in 0.75s
+2023.09.06 17:06:30 WARN  Build server is not auto-connectable.
+2023.09.06 17:06:34 INFO  running '/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home/bin/java -Djline.terminal=jline.UnsupportedTerminal -Dsbt.log.noformat=true -Dfile.encoding=UTF-8 -jar /var/folders/hn/ft44w3s10vqgv9pc1kk1z22m0000gp/T/metals15764512325421444167/sbt-launch.jar -Dbloop.export-jar-classifiers=sources bloopInstall'
+2023.09.06 17:06:34 WARN  no build target for: /Users/michaelyau/self_projects/scala-notes-and-examples/project/project/metals.sbt
+2023.09.06 17:06:34 WARN  no build target for: /Users/michaelyau/self_projects/scala-notes-and-examples/project/metals.sbt
+2023.09.06 17:06:34 INFO  skipping build import with status 'Started'
+2023.09.06 17:06:36 INFO  [info] welcome to sbt 1.8.0 (AdoptOpenJDK Java 11.0.11)
+2023.09.06 17:06:38 INFO  [info] loading global plugins from /Users/michaelyau/.sbt/1.0/plugins
+2023.09.06 17:06:42 INFO  no build target found for /Users/michaelyau/self_projects/scala-notes-and-examples/project/metals.sbt. Using presentation compiler with project's scala-library version: 3.3.0
+2023.09.06 17:06:43 INFO  [info] loading settings for project scala-notes-and-examples-build-build from metals.sbt ...
+2023.09.06 17:06:43 INFO  [info] loading project definition from /Users/michaelyau/self_projects/scala-notes-and-examples/project/project
+2023.09.06 17:06:46 INFO  [info] loading settings for project scala-notes-and-examples-build from metals.sbt ...
+2023.09.06 17:06:46 INFO  [info] loading project definition from /Users/michaelyau/self_projects/scala-notes-and-examples/project
+2023.09.06 17:06:49 INFO  [success] Generated .bloop/scala-notes-and-examples-build.json
+2023.09.06 17:06:49 INFO  [success] Total time: 3 s, completed 6 Sep 2023, 17:06:49
+2023.09.06 17:06:52 INFO  [info] loading settings for project root from build.sbt ...
+2023.09.06 17:06:52 INFO  [info] set current project to scala-notes-and-examples (in build file:/Users/michaelyau/self_projects/scala-notes-and-examples/)
+2023.09.06 17:06:53 INFO  [success] Generated .bloop/root.json
+2023.09.06 17:06:53 INFO  [success] Generated .bloop/root-test.json
+2023.09.06 17:06:53 INFO  [success] Total time: 1 s, completed 6 Sep 2023, 17:06:53
+2023.09.06 17:06:53 INFO  time: ran 'sbt bloopInstall' in 19s
+2023.09.06 17:06:53 INFO  Attempting to connect to the build server...
+2023.09.06 17:06:53 INFO  Bloop uses /Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home defined at /Users/michaelyau/.bloop/bloop.json
+2023.09.06 17:06:53 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /Users/michaelyau/self_projects/scala-notes-and-examples/.metals/bsp.trace.json or /Users/michaelyau/Library/Caches/org.scalameta.metals/bsp.trace.json
+2023.09.06 17:06:56 INFO  Attempting to connect to the build server...
+2023.09.06 17:06:56 INFO  Bloop uses /Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home defined at /Users/michaelyau/.bloop/bloop.json
+2023.09.06 17:06:56 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /Users/michaelyau/self_projects/scala-notes-and-examples/project/.metals/bsp.trace.json or /Users/michaelyau/Library/Caches/org.scalameta.metals/bsp.trace.json
+2023.09.06 17:06:56 INFO  time: Connected to build server in 2.78s
+2023.09.06 17:06:56 INFO  Connected to Build server: Bloop v1.5.8
+2023.09.06 17:07:05 INFO  time: indexed workspace in 8.99s
+2023.09.07 08:38:50 INFO  Shutting down server
+2023.09.07 08:38:50 INFO  shutting down Metals
+2023.09.07 08:38:50 INFO  Shut down connection with build server.
+2023.09.07 08:38:50 INFO  Shut down connection with build server.
+2023.09.07 08:38:50 INFO  Exiting server
+2023.09.11 16:44:20 INFO  Started: Metals version 1.0.1 in folders '/Users/michaelyau/self_projects/scala-notes-and-examples' for client Visual Studio Code 1.81.1.
+Sep 11, 2023 4:44:20 PM org.flywaydb.core.internal.license.VersionPrinter printVersionOnly
+INFO: Flyway Community Edition 9.21.2 by Redgate
+Sep 11, 2023 4:44:20 PM org.flywaydb.core.internal.license.VersionPrinter printVersion
+INFO: See release notes here: https://rd.gt/416ObMi
+Sep 11, 2023 4:44:20 PM org.flywaydb.core.internal.license.VersionPrinter printVersion
+INFO: 
+Sep 11, 2023 4:44:21 PM org.flywaydb.core.FlywayExecutor execute
+INFO: Database: jdbc:h2:file:/Users/michaelyau/self_projects/scala-notes-and-examples/.metals/metals (H2 2.1)
+Sep 11, 2023 4:44:21 PM org.flywaydb.core.internal.command.DbValidate validate
+INFO: Successfully validated 4 migrations (execution time 00:00.065s)
+Sep 11, 2023 4:44:21 PM org.flywaydb.core.internal.command.DbMigrate migrateGroup
+INFO: Current version of schema "PUBLIC": 4
+Sep 11, 2023 4:44:21 PM org.flywaydb.core.internal.command.DbMigrate logSummary
+INFO: Schema "PUBLIC" is up to date. No migration necessary.
+2023.09.11 16:44:22 INFO  time: initialize in 1.58s
+2023.09.11 16:44:24 INFO  Attempting to connect to the build server...
+2023.09.11 16:44:24 INFO  Bloop uses /Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home defined at /Users/michaelyau/.bloop/bloop.json
+2023.09.11 16:44:24 INFO  skipping build import with status 'Installed'
+2023.09.11 16:44:24 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /Users/michaelyau/self_projects/scala-notes-and-examples/.metals/bsp.trace.json or /Users/michaelyau/Library/Caches/org.scalameta.metals/bsp.trace.json
+2023.09.11 16:44:24 INFO  Attempting to connect to the build server...
+2023.09.11 16:44:24 INFO  Bloop uses /Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home defined at /Users/michaelyau/.bloop/bloop.json
+2023.09.11 16:44:24 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /Users/michaelyau/self_projects/scala-notes-and-examples/project/.metals/bsp.trace.json or /Users/michaelyau/Library/Caches/org.scalameta.metals/bsp.trace.json
+2023.09.11 16:44:24 INFO  time: Connected to build server in 0.52s
+2023.09.11 16:44:24 INFO  Connected to Build server: Bloop v1.5.8
+2023.09.11 16:44:31 INFO  time: indexed workspace in 6.43s
+2023.09.11 16:56:14 INFO  Shutting down server
+2023.09.11 16:56:14 INFO  shutting down Metals
+2023.09.11 16:56:14 INFO  Shut down connection with build server.
+2023.09.11 16:56:14 INFO  Shut down connection with build server.
+2023.09.11 16:56:14 INFO  Exiting server
+2023.09.22 16:20:19 INFO  Started: Metals version 1.0.1 in folders '/Users/michaelyau/self_projects/scala-notes-and-examples' for client Visual Studio Code 1.82.2.
+Sep 22, 2023 4:20:19 PM org.flywaydb.core.internal.license.VersionPrinter printVersionOnly
+INFO: Flyway Community Edition 9.21.2 by Redgate
+Sep 22, 2023 4:20:19 PM org.flywaydb.core.internal.license.VersionPrinter printVersion
+INFO: See release notes here: https://rd.gt/416ObMi
+Sep 22, 2023 4:20:19 PM org.flywaydb.core.internal.license.VersionPrinter printVersion
+INFO: 
+Sep 22, 2023 4:20:19 PM org.flywaydb.core.FlywayExecutor execute
+INFO: Database: jdbc:h2:file:/Users/michaelyau/self_projects/scala-notes-and-examples/.metals/metals (H2 2.1)
+Sep 22, 2023 4:20:20 PM org.flywaydb.core.internal.command.DbValidate validate
+INFO: Successfully validated 4 migrations (execution time 00:00.055s)
+Sep 22, 2023 4:20:20 PM org.flywaydb.core.internal.command.DbMigrate migrateGroup
+INFO: Current version of schema "PUBLIC": 4
+Sep 22, 2023 4:20:20 PM org.flywaydb.core.internal.command.DbMigrate logSummary
+INFO: Schema "PUBLIC" is up to date. No migration necessary.
+2023.09.22 16:20:20 INFO  time: initialize in 1.41s
+2023.09.22 16:20:23 INFO  Attempting to connect to the build server...
+2023.09.22 16:20:23 INFO  Bloop uses /Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home defined at /Users/michaelyau/.bloop/bloop.json
+2023.09.22 16:20:23 INFO  skipping build import with status 'Installed'
+2023.09.22 16:20:23 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /Users/michaelyau/self_projects/scala-notes-and-examples/.metals/bsp.trace.json or /Users/michaelyau/Library/Caches/org.scalameta.metals/bsp.trace.json
+2023.09.22 16:20:23 INFO  Attempting to connect to the build server...
+2023.09.22 16:20:23 INFO  Bloop uses /Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home defined at /Users/michaelyau/.bloop/bloop.json
+2023.09.22 16:20:23 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /Users/michaelyau/self_projects/scala-notes-and-examples/project/.metals/bsp.trace.json or /Users/michaelyau/Library/Caches/org.scalameta.metals/bsp.trace.json
+2023.09.22 16:20:23 INFO  time: Connected to build server in 0.51s
+2023.09.22 16:20:23 INFO  Connected to Build server: Bloop v1.5.8
+2023.09.22 16:20:31 INFO  time: indexed workspace in 8.18s
+2023.09.23 22:49:03 INFO  Shutting down server
+2023.09.23 22:49:03 INFO  shutting down Metals
+2023.09.23 22:49:03 INFO  Shut down connection with build server.
+2023.09.23 22:49:03 INFO  Shut down connection with build server.
+2023.09.23 22:49:03 INFO  Exiting server
+2023.10.23 16:38:19 INFO  Started: Metals version 1.1.0 in folders '/Users/michaelyau/self_projects/scala-notes-and-examples' for client Visual Studio Code 1.83.1.
+2023.10.23 16:38:21 INFO  Attempting to connect to the build server...
+2023.10.23 16:38:21 INFO  Bloop uses /Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home defined at /Users/michaelyau/.bloop/bloop.json
+2023.10.23 16:38:22 INFO  skipping build import with status 'Installed'
+2023.10.23 16:38:21 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /Users/michaelyau/self_projects/scala-notes-and-examples/.metals/bsp.trace.json or /Users/michaelyau/Library/Caches/org.scalameta.metals/bsp.trace.json
+2023.10.23 16:38:24 INFO  Attempting to connect to the build server...
+2023.10.23 16:38:24 INFO  Bloop uses /Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home defined at /Users/michaelyau/.bloop/bloop.json
+2023.10.23 16:38:24 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /Users/michaelyau/self_projects/scala-notes-and-examples/project/.metals/bsp.trace.json or /Users/michaelyau/Library/Caches/org.scalameta.metals/bsp.trace.json
+2023.10.23 16:38:24 INFO  time: Connected to build server in 2.78s
+2023.10.23 16:38:24 INFO  Connected to Build server: Bloop v1.5.11
+2023.10.23 16:38:31 INFO  time: indexed workspace in 6.95s
+2023.10.23 16:50:43 INFO  Shutting down server
+2023.10.23 16:50:43 INFO  shutting down Metals
+2023.10.23 16:50:43 INFO  Shut down connection with build server.
+2023.10.23 16:50:43 INFO  Shut down connection with build server.
+2023.10.23 16:50:43 INFO  Exiting server
+2023.11.14 20:30:58 INFO  Started: Metals version 1.1.0+55-213e575e-SNAPSHOT in folders '/Users/michaelyau/self_projects/scala-notes-and-examples' for client Visual Studio Code 1.84.2.
+2023.11.14 20:30:59 INFO  Attempting to connect to the build server...
+2023.11.14 20:30:59 INFO  Bloop uses /Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home defined at /Users/michaelyau/.bloop/bloop.json
+2023.11.14 20:31:00 INFO  skipping build import with status 'Installed'
+2023.11.14 20:31:03 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /Users/michaelyau/self_projects/scala-notes-and-examples/.metals/bsp.trace.json or /Users/michaelyau/Library/Caches/org.scalameta.metals/bsp.trace.json
+2023.11.14 20:31:03 INFO  Attempting to connect to the build server...
+2023.11.14 20:31:03 INFO  Bloop uses /Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home defined at /Users/michaelyau/.bloop/bloop.json
+2023.11.14 20:31:03 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /Users/michaelyau/self_projects/scala-notes-and-examples/project/.metals/bsp.trace.json or /Users/michaelyau/Library/Caches/org.scalameta.metals/bsp.trace.json
+2023.11.14 20:31:03 INFO  time: Connected to build server in 3.96s
+2023.11.14 20:31:03 INFO  Connected to Build server: Bloop v1.5.11
+2023.11.14 20:31:14 INFO  time: indexed workspace in 10s
+Nov 14, 2023 8:31:49 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
