@@ -1,4 +1,4 @@
-# scala-examples
+# scala-notes-and-examples
 
  A personal playground for general stuff, books and notes.
 
