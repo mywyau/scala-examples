@@ -1,8 +1,8 @@
 TC Evening Weather Report
 ++++++++    Summary      ++++++++
-Notes:  Pretty quiet, there was an auth blip for trusts but none for Custodians
+Notes: Nothing to note, regular timeouts to des or auth
 Slack Channels:
-Traffic Levels: Generally pretty normal, no abnormal ranges or spikes, comparable to the recent days
+Traffic Levels: Generally pretty normal for the last 7 days, relatively low compared previous month
 
 CIS/HOSS            - Normal traffic levels
 IRR                 - Normal traffic levels
@@ -16,31 +16,29 @@ SA Pre-pop          - Normal traffic levels
 
 --------------------    Failure rates  --------------------------
 tax-history
-404     40.85%       10340
-tax-history-frontend
-404     0.69%          85
+404     37.96%      11193
 pbik-frontend
-401     2.96%          5
+401     5.53%          20
 charities-registration-frontend
-401     1.20%          77
+401     1.13%          78
 individual-income
-404      50.77%      15342
-401       9.89%       2989
+404     55.58%       3275
+401     15.67%        923
 individual-benefits
-404      62.72%      20287
-401       9.87%       3191
+404     61.87%       3699
+401     16.66%        996
 national-insurance
-404s    69.45%       22014
-401s     9.60%        3044
+404s    60.81%       3538
+401s    16.05%        934
 individual-tax
-404      50.73%      15173
-401       9.93%       2917
+404     55.84%       3306
+401     15.83%        937
 individual-employment
-404      57.90%       12322
-401       4.96%        1054
+404     56.34%        920
+401      8.82%       144
 
 home-office-immigration-status-proxy
-404       9.82%        273
+404      14.00%       269
 ------------------------------------------------------------------
 Shuttering: None
 Recommendations: None

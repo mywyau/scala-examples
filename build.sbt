@@ -14,6 +14,7 @@ lazy val root = (project in file("."))
   .settings(
     name := "scala-notes-and-examples",
     libraryDependencies ++= Seq(
+      "dev.doamaral" %% "zio-selenium" % "1.0.0",
       "org.scala-lang.modules" %% "scala-parser-combinators" % "2.1.1",
       "org.scalactic" %% "scalactic" % "3.2.14",
       "org.typelevel" %% "cats-core" % "2.9.0",   // cats for functional programming

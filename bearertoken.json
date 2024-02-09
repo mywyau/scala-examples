@@ -1,0 +1,382 @@
+{
+  "info": {
+    "_postman_id": "0d2d6ef5-f4dc-4459-8ab1-456f67c26298",
+    "name": "DDCE Live Service",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "11599030"
+  },
+  "item": [
+    {
+      "name": "OAuth",
+      "item": [
+        {
+          "name": "Local",
+          "item": [
+            {
+              "name": "Generate Bearer Token",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "type": "text",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"clientId\": \"id\",\n  \"enrolments\": [],\n  \"ttl\": 14400\n}"
+                },
+                "url": {
+                  "raw": "{{env}}/{{auth}}/auth/sessions",
+                  "host": [
+                    "{{env}}"
+                  ],
+                  "path": [
+                    "{{auth}}",
+                    "auth",
+                    "sessions"
+                  ]
+                },
+                "description": "OAuth flow for individual-benefits"
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "QA & Staging",
+          "item": [
+            {
+              "name": "Generate Bearer Token",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "type": "text",
+                    "value": "application/x-www-form-urlencoded"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "client_id",
+                      "value": "{{client_id}}",
+                      "type": "text"
+                    },
+                    {
+                      "key": "client_secret",
+                      "value": "{{totp_code}}{{client_secret}}",
+                      "type": "text"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "{{grant_type}}",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{env}}/oauth/token",
+                  "host": [
+                    "{{env}}"
+                  ],
+                  "path": [
+                    "oauth",
+                    "token"
+                  ]
+                },
+                "description": "OAuth flow for individual-benefits"
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "API",
+      "item": [
+        {
+          "name": "Get NINO API",
+          "item": [
+            {
+              "name": "Register NINO",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "type": "text",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.hmrc.1.0+json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "CorrelationId",
+                    "value": "c75f40a6-a3df-4429-a697-471eeec46435",
+                    "type": "text"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "{{bearerToken}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "OriginatorId",
+                    "value": "DA2_DWP_REG",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"nino\": \"AA000000A\",\n    \"gender\": \"MALE\",\n    \"entryDate\": \"02-03-2020\",\n    \"birthDate\": \"15-11-1974\",\n    \"birthDateVerification\": \"VERIFIED\",\n    \"officeNumber\": \"123456\",\n    \"contactNumber\": \"1234567890\",\n    \"nationalityCode\": \"FRA\",\n    \"names\": [\n        {\n            \"nameType\": \"REGISTERED\",\n            \"title\": \"MR\",\n            \"forename\": \"AForename\",\n            \"secondForename\": \"AMiddle name\",\n            \"surname\": \"ASurname\",\n            \"startDate\": \"03-04-2020\",\n            \"endDate\": \"17-08-2020\"\n        }\n    ],\n    \"historicNames\": [\n        {\n            \"nameType\": \"REGISTERED\",\n            \"title\": \"MRS\",\n            \"forename\": \"AForename\",\n            \"secondForename\": \"AMiddle name\",\n            \"surname\": \"ASurname\",\n            \"startDate\": \"17-03-2019\",\n            \"endDate\": \"02-04-2020\"\n        },\n        {\n            \"nameType\": \"REGISTERED\",\n            \"title\": \"MISS\",\n            \"forename\": \"AForename\",\n            \"secondForename\": \"AMiddle name\",\n            \"surname\": \"ASurname\",\n            \"startDate\": \"09-07-2016\",\n            \"endDate\": \"16-03-2019\"\n        }\n    ],\n    \"addresses\": [\n        {\n            \"addressType\": \"RESIDENTIAL\",\n            \"line1\": \"4 AStreetName\",\n            \"line2\": \"Town\",\n            \"line3\": \"Place\",\n            \"line4\": \"Area\",\n            \"line5\": \"Province\",\n            \"postcode\": \"AA1 1AA\",\n            \"countryCode\": \"GBR\",\n            \"startDate\": \"25-04-2020\",\n            \"endDate\": \"27-07-2020\"\n        }\n    ],\n    \"historicAddresses\": [\n        {\n            \"addressType\": \"RESIDENTIAL\",\n            \"line1\": \"1 AStreetName\",\n            \"line2\": \"Town\",\n            \"line3\": \"Place\",\n            \"line4\": \"Area\",\n            \"line5\": \"Province\",\n            \"postcode\": \"AA1 1AA\",\n            \"countryCode\": \"GBR\",\n            \"startDate\": \"29-03-2003\",\n            \"endDate\": \"23-04-2020\"\n        },\n        {\n            \"addressType\": \"RESIDENTIAL\",\n            \"line1\": \"2 AStreetName\",\n            \"line2\": \"Town\",\n            \"line3\": \"Place\",\n            \"line4\": \"Area\",\n            \"line5\": \"Province\",\n            \"countryCode\": \"ZAF\",\n            \"startDate\": \"02-05-1998\",\n            \"endDate\": \"28-03-2003\"\n        }\n    ],\n    \"marriages\": [\n        {\n            \"maritalStatus\": \"MARRIAGE-TERMINATED\",\n            \"startDate\": \"04-02-2017\",\n            \"endDate\": \"05-08-2019\",\n            \"partnerNino\": \"AA000001D\",\n            \"birthDate\": \"11-10-1954\",\n            \"forename\": \"Partner forename\",\n            \"surname\": \"Partner surname\"\n        },\n        {\n            \"maritalStatus\": \"CIVIL-PARTNERSHIP-TERMINATED\",\n            \"startDate\": \"02-06-2006\",\n            \"endDate\": \"01-04-2007\",\n            \"partnerNino\": \"AA000002B\",\n            \"birthDate\": \"08-09-1970\",\n            \"forename\": \"Partner forename\",\n            \"surname\": \"Partner surname\"\n        }\n    ],\n    \"originData\": {\n        \"birthTown\": \"ATown\",\n        \"birthProvince\": \"SomeProvince\",\n        \"birthCountryCode\": \"CAN\",\n        \"birthSurname\": \"ASurname\",\n        \"maternalForename\": \"MotherForename\",\n        \"maternalSurname\": \"AnotherSurname\",\n        \"paternalForename\": \"AForename\",\n        \"paternalSurname\": \"ASurname\",\n        \"foreignSocialSecurity\": \"1234567890AB\",\n        \"lastEUAddress\": {\n            \"line1\": \"3 AStreetName\",\n            \"line2\": \"Town\",\n            \"line3\": \"Place\",\n            \"line4\": \"Area\",\n            \"line5\": \"Province\"\n        }\n    },\n    \"priorResidency\": [\n        {\n            \"priorStartDate\": \"08-02-2001\",\n            \"priorEndDate\": \"03-03-2001\"\n        },\n        {\n            \"priorStartDate\": \"14-11-2007\",\n            \"priorEndDate\": \"17-06-2008\"\n        }\n    ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{env}}/{{get-nino-api}}/process-nino",
+                  "host": [
+                    "{{env}}"
+                  ],
+                  "path": [
+                    "{{get-nino-api}}",
+                    "process-nino"
+                  ]
+                },
+                "description": "OAuth flow for individual-benefits"
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Stubs",
+      "item": [
+        {
+          "name": "Nino Automation Stub",
+          "item": [
+            {
+              "name": "Setup Data",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "type": "text",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"_id\": \"/register\",\n    \"schemaId\": \"registerNinoResponse\",\n    \"method\": \"POST\",\n    \"status\": 202,\n    \"nino\": \"AA000000A\",\n    \"response\": {\n        \"message\": \"Your nino has successfully been registered\"\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{env}}/{{nino-automation-stub}}/setup/data",
+                  "host": [
+                    "{{env}}"
+                  ],
+                  "path": [
+                    "{{nino-automation-stub}}",
+                    "setup",
+                    "data"
+                  ]
+                },
+                "description": "OAuth flow for individual-benefits"
+              },
+              "response": []
+            },
+            {
+              "name": "Setup Schema",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "type": "text",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"_id\": \"registerNinoResponse\",\n    \"url\": \"/register\",\n    \"method\": \"POST\",\n    \"responseSchema\": {\n        \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n        \"title\": \"Register NINO response\",\n        \"type\": \"object\",\n        \"properties\": {\n            \"message\": {\n                \"description\": \"Response received from DES\",\n                \"type\": \"string\"\n            }\n        },\n        \"required\": [\n            \"message\"\n        ],\n        \"additionalProperties\": false\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{env}}/{{nino-automation-stub}}/setup/schema",
+                  "host": [
+                    "{{env}}"
+                  ],
+                  "path": [
+                    "{{nino-automation-stub}}",
+                    "setup",
+                    "schema"
+                  ]
+                },
+                "description": "OAuth flow for individual-benefits"
+              },
+              "response": []
+            },
+            {
+              "name": "Delete all data",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{env}}/{{nino-automation-stub}}/setup/all-data",
+                  "host": [
+                    "{{env}}"
+                  ],
+                  "path": [
+                    "{{nino-automation-stub}}",
+                    "setup",
+                    "all-data"
+                  ]
+                },
+                "description": "OAuth flow for individual-benefits"
+              },
+              "response": []
+            },
+            {
+              "name": "Delete data by ID",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{env}}/{{nino-automation-stub}}/setup/data/{{schemaId}}",
+                  "host": [
+                    "{{env}}"
+                  ],
+                  "path": [
+                    "{{nino-automation-stub}}",
+                    "setup",
+                    "data",
+                    "{{schemaId}}"
+                  ]
+                },
+                "description": "OAuth flow for individual-benefits"
+              },
+              "response": []
+            },
+            {
+              "name": "Delete all schema",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{env}}/{{nino-automation-stub}}/setup/all-schemas",
+                  "host": [
+                    "{{env}}"
+                  ],
+                  "path": [
+                    "{{nino-automation-stub}}",
+                    "setup",
+                    "all-schemas"
+                  ]
+                },
+                "description": "OAuth flow for individual-benefits"
+              },
+              "response": []
+            },
+            {
+              "name": "Delete schema by ID",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{env}}/{{nino-automation-stub}}/setup/schema/{{schemaId}}",
+                  "host": [
+                    "{{env}}"
+                  ],
+                  "path": [
+                    "{{nino-automation-stub}}",
+                    "setup",
+                    "schema",
+                    "{{schemaId}}"
+                  ]
+                },
+                "description": "OAuth flow for individual-benefits"
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}
