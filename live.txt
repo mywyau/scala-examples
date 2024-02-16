@@ -1,8 +1,8 @@
 TC Evening Weather Report
 ++++++++    Summary      ++++++++
-Notes: Nothing to note, regular timeouts to des or auth
+Notes: Nothing to note, regular timeouts to des or auth, AVR has a leak detect issue but has been noted and looked into by Lorenzo
 Slack Channels:
-Traffic Levels: Generally pretty normal for the last 7 days, relatively low compared previous month
+Traffic Levels: Generally pretty normal for the last 7 days, nothing major to report
 
 CIS/HOSS            - Normal traffic levels
 IRR                 - Normal traffic levels
@@ -16,29 +16,29 @@ SA Pre-pop          - Normal traffic levels
 
 --------------------    Failure rates  --------------------------
 tax-history
-404     37.96%      11193
+404     33.60%      16538
 pbik-frontend
-401     5.53%          20
+401     13.02%         50
 charities-registration-frontend
-401     1.13%          78
+401     1.20%          92
 individual-income
-404     55.58%       3275
-401     15.67%        923
+404     58.54%       3291
+401     15.58%        876
 individual-benefits
-404     61.87%       3699
-401     16.66%        996
+404     64.54%       3675
+401     16.09%        916
 national-insurance
-404s    60.81%       3538
-401s    16.05%        934
+404s    63.28%       3553
+401s    16.05%        901
 individual-tax
-404     55.84%       3306
-401     15.83%        937
+404     59.32%       3316
+401     15.44%        836
 individual-employment
-404     56.34%        920
-401      8.82%       144
+404     56.72%        882
+401     10.87%        169
 
 home-office-immigration-status-proxy
-404      14.00%       269
+404      12.11%       201
 ------------------------------------------------------------------
 Shuttering: None
 Recommendations: None
