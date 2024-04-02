@@ -15,7 +15,7 @@ object KibanaLoginAutomation extends App {
   // You can add additional options if needed
 
   val downloadDir = Paths.get("src/main/resources/downloads")
-  chromeOptions.("download.default_directory", downloadDir.toAbsolutePath.toString)
+//  chromeOptions.("download.default_directory", downloadDir.toAbsolutePath.toString)
 
 
   // Create a WebDriver instance using ChromeDriver and the configured options

@@ -5,14 +5,9 @@ import org.openqa.selenium.{By, WebDriver}
 
 import scala.annotation.tailrec
 
-//object RulingFrontendProd extends App {
-//
-//
-//}
-
 object RulingFrontendProd extends App {
 
-  System.setProperty("webdriver.chrome.driver", "/usr/local/Caskroom/chromedriver/121.0.6167.85/chromedriver-mac-x64/chromedriver")
+  System.setProperty("webdriver.chrome.driver", "/usr/local/Caskroom/chromedriver/123.0.6312.86/chromedriver-mac-x64/chromedriver")
 
   // Optional: Set Chrome options (e.g., to run headless)
 
@@ -31,24 +26,25 @@ object RulingFrontendProd extends App {
   def findRulingCaseRef(i: Int): String =
     webDriver.findElement(By.cssSelector(rulingCaseRefSelector(i))).getText
 
+  def numberOfSearchesOnPage: Int = webDriver.findElements(By.cssSelector("#search_results-list > li")).size()
+
   def getAllSearchResultsForPage: Seq[String] = {
 
     @tailrec
     def loop(start: Int, finish: Int, acc: Seq[String]): Seq[String] =
+
       start match {
         case n if n == finish => acc
         case n =>
           loop(n + 1, finish, acc :+ findRulingCaseRef(n))
       }
 
-    val rulingReferences = loop(1, 25, Seq())
+    val rulingReferences = loop(0, finish = numberOfSearchesOnPage, acc = Seq())
     println(rulingReferences)
     rulingReferences
   }
 
   val nextLink = "#search-pagination_bottom-page_next > a"
-
-  val nextLinkPresentOnPage: Boolean = webDriver.findElement(By.cssSelector(nextLink)).isDisplayed
 
   def clickNextLink(): Unit = webDriver.findElement(By.cssSelector(nextLink)).click()
 
@@ -58,37 +54,46 @@ object RulingFrontendProd extends App {
   def loopThroughAllPages: Seq[(String, Int)] = {
 
     @tailrec
-    def loop(pageNumber: Int, nextLinkPresent: Boolean, acc: Seq[(String, Int)]): Seq[(String, Int)] =
-      nextLinkPresent match {
-        case true =>
-          if (determinePageIsCorrect(pageNumber)) {
-            println(
-              webDriver.getCurrentUrl.toString
-                .replace("https://www.tax.service.gov.uk/search-for-advance-tariff-rulings/search?", "")
-            )
-            val allCasesOnPage =
-              getAllSearchResultsForPage.zipWithIndex.map { case (str, i) =>
-                (str, pageNumber)
-              }
-            clickNextLink()
-            loop(pageNumber + 1, nextLinkPresent, acc ++ allCasesOnPage)
-          } else {
-            throw new RuntimeException(s"Failed to match url for pageNo: $pageNumber")
-          }
-        case false => acc
+    def loop(pageNumber: Int, acc: Seq[(String, Int)]): Seq[(String, Int)] =
+      if (determinePageIsCorrect(pageNumber)) {
+        println(
+          "\n" + webDriver.getCurrentUrl.toString
+            .replace("https://www.tax.service.gov.uk/search-for-advance-tariff-rulings/search?", "")
+        )
 
+        val allCasesOnPage = {
+          getAllSearchResultsForPage.zipWithIndex.map { case (str, i) =>
+            (str, pageNumber)
+          }
+        }
+
+        if (numberOfSearchesOnPage == 25) {
+          clickNextLink()
+        }
+
+        loop(pageNumber + 1, acc ++ allCasesOnPage)
+      } else {
+        acc
       }
 
-    val rulingReferencesWithPageNo = loop(1, nextLinkPresentOnPage, Seq())
-    println(rulingReferencesWithPageNo)
+    val rulingReferencesWithPageNo = loop(1, Seq())
+    val duplicates: Seq[String] = rulingReferencesWithPageNo.map(_._1).diff(rulingReferencesWithPageNo.map(_._1).distinct).distinct
+
+    val duplicatesWithPageNumber: Seq[(String, Int)] = rulingReferencesWithPageNo.collect { case tuple: (String, Int) if duplicates.contains(tuple._1) =>
+      tuple
+    }
+
+    println("\nduplicatesWithPageNumber " + duplicatesWithPageNumber)
+
+    //    println(rulingReferencesWithPageNo)  // print all cases with page number
     rulingReferencesWithPageNo
   }
 
   webDriver.get(productionService)
-  val findDuplicates: Map[String, Int] =
-    loopThroughAllPages.groupBy(identity).collect { case (x, ys) if ys.lengthCompare(1) > 0 => x }
-  println(findDuplicates)
 
+  println("\nnumberOfSearchesOnPage: " + numberOfSearchesOnPage)
+
+  loopThroughAllPages
 
   // Close the browser
   webDriver.quit()
