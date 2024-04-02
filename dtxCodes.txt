@@ -1,0 +1,11 @@
+
+Hi all I've been taking a look at all the DTX codes and I think these are some of the most relevant for logging Cap work to:
+101051292 - CECTRD - Training fees. Separate codes for EET,Induction,Certs (General training)
+101051338 - CECTRDKT - Delivering training/ knowledge transfer (Knowledge transfer)
+101051855 - CECTRDCERT - Certification related training time + Course fees (Course training/certification)
+100987974 - CECCOM - Time/Expenses attending community sessions/events (Most large Cap meetings)
+100968540 - CECCNF - Time/Expenses attending conferences and events (In person events)
+100945230 - CECSMD - People related activities including 1-2-1's and meetings (People manager, pay discussions etc)
+HOL00 - Holiday - Holiday booked in DTX
+SCK00  - Sickness - Sick Leave
+SCK10  - Doctor/Dentist/Hospital - Sick Leave (This one surprised me, previously I've just been working overtime to go to appointments) (edited)

@@ -1,14 +1,14 @@
 TC Evening Weather Report
 ++++++++    Summary      ++++++++
-Notes: Nothing to note, regular timeouts to des or auth, AVR has a leak detect issue but has been noted and looked into by Lorenzo
+Notes:
 Slack Channels:
-Traffic Levels: Generally pretty normal for the last 7 days, nothing major to report
+Traffic Levels: Pretty quiet for Custodians services nothing major to report.
 
 CIS/HOSS            - Normal traffic levels
 IRR                 - Normal traffic levels
 NINO API            - Normal traffic levels
 Passengers          - Normal traffic levels
-ATaR                - Normal traffic levels
+ATaR                - Normal traffic levels, Ruling frontend is still got some sharp spikes but has been occurring for a while now.
 Charities           - Normal traffic levels
 IRV(Tax-history)    - Normal traffic levels
 PBIK                - Normal traffic levels
@@ -16,29 +16,27 @@ SA Pre-pop          - Normal traffic levels
 
 --------------------    Failure rates  --------------------------
 tax-history
-404     33.60%      16538
-pbik-frontend
-401     13.02%         50
+404     33.75%      8893
 charities-registration-frontend
-401     1.20%          92
+401     1.46%          90
 individual-income
-404     58.54%       3291
-401     15.58%        876
+404     63.23%       3019
+401     14.66%       700
 individual-benefits
-404     64.54%       3675
-401     16.09%        916
+404     67.19%       3223
+401     15.16%       727
 national-insurance
-404s    63.28%       3553
-401s    16.05%        901
+404s    62.06%       2796
+401s    15.34%        691
 individual-tax
-404     59.32%       3316
-401     15.44%        836
+404     63.71%       3050
+401     14.61%        695
 individual-employment
-404     56.72%        882
-401     10.87%        169
+404     59.55%        3030
+401      9.84%         695
 
 home-office-immigration-status-proxy
-404      12.11%       201
+404      13.11%        216
 ------------------------------------------------------------------
 Shuttering: None
 Recommendations: None

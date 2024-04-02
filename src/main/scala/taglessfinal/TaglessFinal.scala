@@ -126,7 +126,7 @@ object TaglessFinal extends IOApp {
 
   import cats.effect.IO
 
-  object ExampleInterpreter extends ExampleDSL[IO] {
+  object ExampleInterpreterIO extends ExampleDSL[IO] {
 
     override def readString: IO[String] = IO(scala.io.StdIn.readLine())
 
@@ -153,7 +153,9 @@ object TaglessFinal extends IOApp {
 
     val program =
       for {
-        _ <- ExampleDSL[IO].writeString("\nIO Interpreter - version Enter a string:")
+        _ <- ExampleDSL[IO].writeString("\nIO Interpreter - version Enter a string:") // we bind the effect type at the very end before running our program
+//        _ <- ExampleInterpreterIO.writeString("\nIO Interpreter - version Enter a string:") // what we can do instead is use the IO interpreter here since all function calls in the for comprehension are IOs
+//        _ <- ExampleInterpreterOption.writeString("\nIO Interpreter - version Enter a string:") // This is not allowed here since it is an Option
         str <- ExampleDSL[IO].readString
         _ <- ExampleDSL[IO].writeString(s"IO Interpreter - version You entered: $str")
       } yield ()
