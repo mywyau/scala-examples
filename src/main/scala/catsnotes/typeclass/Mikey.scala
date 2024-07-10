@@ -92,6 +92,11 @@ object MikeyInterfaceSyntax { //extension syntax
 
 }
 
+// isAssistedDigital =
+// request.headers
+// .get("x-forwarded-host")
+// .exists(host => host.startsWith("admin") || host.startsWith("test-admin"))
+
 /*
   Scala provides a generic type class interface called 'implicitly'
   We can use implicitly to summon any value from the implicit scope. We provide the type we want and 'implicitly' does the rest

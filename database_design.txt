@@ -1,0 +1,30 @@
+storing a large amount of city data
+
+- What kind of thing are we storing?
+- What properties does this thing have?
+- What type of data does each of those properties contain?
+
+
+tables - collections of columns
+
+table called 'cities'
+
+each city has some desired properties e.g. name, country, population & area. each property is a column
+
+each column stores a specific type of data e.g. strings, numbers etc.
+
+each city added is a row
+
+CREATE table cities (
+  name VARCHAR(50),
+  country VARCHAR(50),
+  population INTEGER,
+  area INTEGER
+);
+
+
+INSERT INTO cities (name, country, population, area)
+VALUES
+	('Delhi', 'India', 28125000, 2240),
+  ('Shanghai', 'China', 22125000, 4015),
+  ('Sao Paolo', 'Brazil', 20935000, 3043);

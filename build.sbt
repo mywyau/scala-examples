@@ -24,7 +24,7 @@ lazy val root = (project in file("."))
       "org.scalamock" %% "scalamock" % "5.2.0" % Test,
       "org.scalatest" %% "scalatest" % "3.2.14" % Test,
       "org.scalacheck" %% "scalacheck" % "1.17.0" % Test, //property testing,
-
+      "joda-time" % "joda-time" % "2.12.7",
 
       "org.seleniumhq.selenium" % "selenium-java" % "3.141.59",
       "org.seleniumhq.selenium" % "selenium-chrome-driver" % "3.141.59",

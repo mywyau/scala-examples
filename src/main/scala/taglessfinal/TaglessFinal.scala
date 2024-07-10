@@ -115,10 +115,10 @@ object TaglessFinal extends IOApp {
   object ExampleDSL {
 
     def apply[F[_] : Monad]: ExampleDSL[F] =
-      new ExampleDSL[F] {
-        override def readString: F[String] = Monad[F].pure(scala.io.StdIn.readLine())
+      new ExampleDSL[F] {                                     // unit type Input/output method
+        override def readString: F[String] = Monad[F].pure(scala.io.StdIn.readLine())   // lifting into a Monad
 
-        override def writeString(str: String): F[Unit] = Monad[F].pure(println(str))
+        override def writeString(str: String): F[Unit] = Monad[F].pure(println(str))   // lifting console output
       }
   }
 

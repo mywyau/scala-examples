@@ -1,42 +1,53 @@
 TC Evening Weather Report
 ++++++++    Summary      ++++++++
-Notes:
-Slack Channels:
-Traffic Levels: Pretty quiet for Custodians services nothing major to report.
+Notes: Pretty steady day, mainly pbik affinity group auth errors for Custodians. The proportion of errors on sa-prepop apis have lowered similar to previous error rates.
 
-CIS/HOSS            - Normal traffic levels
-IRR                 - Normal traffic levels
-NINO API            - Normal traffic levels
+
+Slack Channels:
+Traffic Levels: Generally pretty normal for Custodians services.
+
+AVR                 - Some requests through out the day
+CIS/HOSS            - Relatively lower traffic levels
+IRR                 - A few requests
 Passengers          - Normal traffic levels
-ATaR                - Normal traffic levels, Ruling frontend is still got some sharp spikes but has been occurring for a while now.
+ATaR                - Normal traffic levels, slightly higher on ruling-frontend
 Charities           - Normal traffic levels
-IRV(Tax-history)    - Normal traffic levels
+IRV(Tax-history)    - Higher traffic levels
 PBIK                - Normal traffic levels
+MODs                - High traffic levels end of day
 SA Pre-pop          - Normal traffic levels
 
 --------------------    Failure rates  --------------------------
+
 tax-history
-404     33.75%      8893
+404    ~37.66%       Normal Range
+
 charities-registration-frontend
-401     1.46%          90
+401    ~1.64%        Normal Range
+
 individual-income
-404     63.23%       3019
-401     14.66%       700
+404    ~66.78%       Lower than recent high error rate
+401    ~8%           Normal range
+
 individual-benefits
-404     67.19%       3223
-401     15.16%       727
+404    ~74.57%       Lower than recent high error rate
+401    ~8.66%        Normal range
+
 national-insurance
-404s    62.06%       2796
-401s    15.34%        691
+404    ~69.23.28%    Lower than recent high error rate
+401    ~8.8%         Normal range
+
 individual-tax
-404     63.71%       3050
-401     14.61%        695
+404    ~66.3%        Lower than recent high error rate
+401    ~8.16%        Normal range
+
 individual-employment
-404     59.55%        3030
-401      9.84%         695
+404    ~67.28%       Lower than recent high error rate
+401    ~4%           Normal range
 
 home-office-immigration-status-proxy
-404      13.11%        216
+404    ~7.6%       Normal range
+
 ------------------------------------------------------------------
 Shuttering: None
 Recommendations: None
